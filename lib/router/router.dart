@@ -5,7 +5,7 @@ import 'package:suica_no_toy_box_flutter/screens/home_screen.dart';
 import 'package:suica_no_toy_box_flutter/screens/sponsor_screen.dart';
 import 'package:suica_no_toy_box_flutter/screens/translate_screen.dart';
 
-final GoRouter router = GoRouter(
+final GoRouter routers = GoRouter(
   initialLocation: '/',
   routes: [
     GoRoute(

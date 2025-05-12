@@ -1,48 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:suica_no_toy_box_flutter/constants/dimensions.dart';
+import 'package:suica_no_toy_box_flutter/constants/navigation_items.dart';
 import 'package:suica_no_toy_box_flutter/widgets/navigation_card.dart';
-
-class NavigationItem {
-  const NavigationItem({
-    required this.title,
-    required this.description,
-    required this.icon,
-    required this.route,
-  });
-  final String title;
-  final String description;
-  final IconData icon;
-  final String route;
-}
-
-const navigationItems = [
-  NavigationItem(
-    title: 'Translate',
-    description: 'A Google Translate-like interface for quick translations',
-    icon: Icons.translate,
-    route: '/translate',
-  ),
-  NavigationItem(
-    title: 'Sponsor Me',
-    description:
-        'Search for sponsorships for the company you want to apply to in the UK',
-    icon: Icons.work,
-    route: '/sponsor',
-  ),
-  NavigationItem(
-    title: 'What for dinner?',
-    description: 'Decide what to eat for dinner',
-    icon: Icons.restaurant,
-    route: '/dinner',
-  ),
-  NavigationItem(
-    title: 'Duration Board',
-    description:
-        'A board for tracking important dates to make your life have hope',
-    icon: Icons.calendar_today,
-    route: '/duration-board',
-  ),
-];
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -52,33 +11,35 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
+          physics: const ClampingScrollPhysics(),
           child: Padding(
-            padding: const EdgeInsets.all(24.0),
+            padding: const EdgeInsets.all(Dimensions.lg),
             child: Column(
+              spacing: Dimensions.xxl,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Center(
+                Center(
                   child: Column(
+                    spacing: Dimensions.sm,
                     children: [
-                      CircleAvatar(
+                      const CircleAvatar(
                         radius: Dimensions.xxl,
                         backgroundImage: NetworkImage(
                           'https://suica.dev/_next/image?url=%2Favatar.jpeg&w=256&q=75',
                         ),
                       ),
-                      SizedBox(height: Dimensions.sm),
                       Text(
                         'Suica\'s Toy Box',
+                        style: Theme.of(context).textTheme.titleLarge,
                       ),
-                      SizedBox(height: Dimensions.sm),
                       Text(
                         'A collection of simple yet useful tools for daily use. All tools run entirely in your browser or use lightweight serverless functions - no data is stored on any servers.',
                         textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(height: Dimensions.xxl),
 
                 GridView.count(
                   shrinkWrap: true,
@@ -97,22 +58,33 @@ class HomeScreen extends StatelessWidget {
                       .toList(),
                 ),
 
-                const SizedBox(height: Dimensions.xxl),
-
                 // Privacy Section
                 Container(
-                  padding: const EdgeInsets.all(24),
+                  padding: const EdgeInsets.all(Dimensions.lg),
                   decoration: BoxDecoration(
-                    color: Colors.grey[100],
-                    borderRadius: BorderRadius.circular(12),
+                    color: Theme.of(context).colorScheme.surfaceContainer,
+                    borderRadius: BorderRadius.circular(Dimensions.lg),
                   ),
-                  child: const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Column(
+                    spacing: Dimensions.sm,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text('Privacy First'),
-                      SizedBox(height: Dimensions.sm),
                       Text(
-                        'All tools in Suica\'s Toy Box run entirely in your browser. We don\'t store any data, don\'t use cookies, and don\'t track your usage.',
+                        'Privacy First',
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: Theme.of(context).colorScheme.secondary,
+                            ),
+                      ),
+                      Text(
+                        "All tools in Suica's Toy Box run entirely in your browser. We don't store any data, don't use cookies, and don't track your usage.",
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                      Text(
+                        "The entire source code is available on GitHub for transparency and verification.",
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ],
                   ),
