@@ -23,21 +23,20 @@ class NavigationCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(Dimensions.lg),
       ),
       child: InkWell(
-        onTap: () => context.go(route),
+        onTap: () => context.push(route),
         borderRadius: BorderRadius.circular(Dimensions.lg),
         child: Padding(
           padding: const EdgeInsets.all(Dimensions.lg),
           child: Column(
+            spacing: Dimensions.sm,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Icon(icon, size: Dimensions.lg),
-              const SizedBox(height: Dimensions.sm),
               Text(
                 title,
                 maxLines: 1,
                 style: Theme.of(context).textTheme.titleMedium,
               ),
-              const SizedBox(height: Dimensions.sm),
               Text(
                 description,
                 maxLines: 2,

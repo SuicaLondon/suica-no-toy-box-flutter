@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'router/router.dart';
+import 'package:suica_no_toy_box_flutter/router/router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      routerConfig: router,
+      routerConfig: routers,
     );
   }
 }
