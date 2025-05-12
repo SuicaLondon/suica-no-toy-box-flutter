@@ -1,0 +1,13 @@
+{
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit",
+      "source.formatDocument": "explicit"
+    }
+  },
+  "dart.analysisExcludedFolders": [],
+  "dart.showTodos": true,
+  "dart.enableSdkFormatter": true
+}
