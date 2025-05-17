@@ -6,49 +6,57 @@ part of 'translate_state.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$InitialImpl _$$InitialImplFromJson(Map<String, dynamic> json) =>
-    _$InitialImpl(
+_$TranslateInitialImpl _$$TranslateInitialImplFromJson(
+        Map<String, dynamic> json) =>
+    _$TranslateInitialImpl(
       translatedText: json['translatedText'] as String,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$InitialImplToJson(_$InitialImpl instance) =>
+Map<String, dynamic> _$$TranslateInitialImplToJson(
+        _$TranslateInitialImpl instance) =>
     <String, dynamic>{
       'translatedText': instance.translatedText,
       'runtimeType': instance.$type,
     };
 
-_$LoadingImpl _$$LoadingImplFromJson(Map<String, dynamic> json) =>
-    _$LoadingImpl(
+_$TranslateLoadingImpl _$$TranslateLoadingImplFromJson(
+        Map<String, dynamic> json) =>
+    _$TranslateLoadingImpl(
       translatedText: json['translatedText'] as String,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$LoadingImplToJson(_$LoadingImpl instance) =>
+Map<String, dynamic> _$$TranslateLoadingImplToJson(
+        _$TranslateLoadingImpl instance) =>
     <String, dynamic>{
       'translatedText': instance.translatedText,
       'runtimeType': instance.$type,
     };
 
-_$SuccessImpl _$$SuccessImplFromJson(Map<String, dynamic> json) =>
-    _$SuccessImpl(
+_$TranslateSuccessImpl _$$TranslateSuccessImplFromJson(
+        Map<String, dynamic> json) =>
+    _$TranslateSuccessImpl(
       translatedText: json['translatedText'] as String,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$SuccessImplToJson(_$SuccessImpl instance) =>
+Map<String, dynamic> _$$TranslateSuccessImplToJson(
+        _$TranslateSuccessImpl instance) =>
     <String, dynamic>{
       'translatedText': instance.translatedText,
       'runtimeType': instance.$type,
     };
 
-_$ErrorImpl _$$ErrorImplFromJson(Map<String, dynamic> json) => _$ErrorImpl(
+_$TranslateErrorImpl _$$TranslateErrorImplFromJson(Map<String, dynamic> json) =>
+    _$TranslateErrorImpl(
       error: json['error'] as String,
       translatedText: json['translatedText'] as String,
       $type: json['runtimeType'] as String?,
     );
 
-Map<String, dynamic> _$$ErrorImplToJson(_$ErrorImpl instance) =>
+Map<String, dynamic> _$$TranslateErrorImplToJson(
+        _$TranslateErrorImpl instance) =>
     <String, dynamic>{
       'error': instance.error,
       'translatedText': instance.translatedText,

@@ -23,9 +23,10 @@ class TranslateCubit extends Cubit<TranslateState> {
       );
 
       await for (final translatedText in translationStream) {
-        emit(TranslateState.success(
+        emit(TranslateState.loading(
             translatedText: state.translatedText + translatedText));
       }
+      emit(TranslateState.success(translatedText: state.translatedText));
     } catch (e) {
       emit(TranslateState.error(error: e.toString(), translatedText: ''));
     }
