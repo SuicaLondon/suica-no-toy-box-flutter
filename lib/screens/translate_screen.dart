@@ -7,6 +7,7 @@ import 'package:suica_no_toy_box_flutter/constants/form_keys.dart';
 import 'package:suica_no_toy_box_flutter/constants/languages.dart';
 import 'package:suica_no_toy_box_flutter/cubits/translate/translate_cubit.dart';
 import 'package:suica_no_toy_box_flutter/cubits/translate/translate_state.dart';
+import 'package:suica_no_toy_box_flutter/extensions/context_extension.dart';
 import 'package:suica_no_toy_box_flutter/widgets/language_dropdown.dart';
 
 class TranslateScreen extends StatefulWidget {
@@ -127,9 +128,14 @@ class _TranslateScreenState extends State<TranslateScreen> {
                 Expanded(
                   child: BlocListener<TranslateCubit, TranslateState>(
                     listener: (context, state) {
-                      _formKey
-                          .currentState?.fields[TranslateFormKeys.targetText]
-                          ?.didChange(state.translatedText);
+                      if (state is TranslateSuccess) {
+                        _formKey
+                            .currentState?.fields[TranslateFormKeys.targetText]
+                            ?.didChange(state.translatedText);
+                      }
+                      if (state is TranslateError) {
+                        context.showErrorSnackBar(state.error);
+                      }
                     },
                     child: FormBuilderTextField(
                       name: TranslateFormKeys.targetText,
@@ -154,9 +160,20 @@ class _TranslateScreenState extends State<TranslateScreen> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: _translate,
-        child: const Icon(Icons.translate),
+      floatingActionButton: BlocBuilder<TranslateCubit, TranslateState>(
+        builder: (context, state) {
+          return FloatingActionButton(
+            onPressed: state is TranslateLoading ? null : _translate,
+            backgroundColor: state is TranslateLoading
+                ? Theme.of(context).colorScheme.surfaceContainer
+                : Theme.of(context).colorScheme.primaryContainer,
+            foregroundColor: state is TranslateLoading
+                ? Theme.of(context).colorScheme.onSurface
+                : Theme.of(context).colorScheme.onPrimaryContainer,
+            splashColor: Theme.of(context).colorScheme.primary,
+            child: const Icon(Icons.translate),
+          );
+        },
       ),
     );
   }

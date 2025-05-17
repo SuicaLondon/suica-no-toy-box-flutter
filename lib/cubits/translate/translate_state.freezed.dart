@@ -17,13 +17,13 @@ final _privateConstructorUsedError = UnsupportedError(
 TranslateState _$TranslateStateFromJson(Map<String, dynamic> json) {
   switch (json['runtimeType']) {
     case 'initial':
-      return _Initial.fromJson(json);
+      return TranslateInitial.fromJson(json);
     case 'loading':
-      return _Loading.fromJson(json);
+      return TranslateLoading.fromJson(json);
     case 'success':
-      return _Success.fromJson(json);
+      return TranslateSuccess.fromJson(json);
     case 'error':
-      return _Error.fromJson(json);
+      return TranslateError.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'runtimeType', 'TranslateState',
@@ -61,26 +61,26 @@ mixin _$TranslateState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Error value) error,
+    required TResult Function(TranslateInitial value) initial,
+    required TResult Function(TranslateLoading value) loading,
+    required TResult Function(TranslateSuccess value) success,
+    required TResult Function(TranslateError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Error value)? error,
+    TResult? Function(TranslateInitial value)? initial,
+    TResult? Function(TranslateLoading value)? loading,
+    TResult? Function(TranslateSuccess value)? success,
+    TResult? Function(TranslateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Error value)? error,
+    TResult Function(TranslateInitial value)? initial,
+    TResult Function(TranslateLoading value)? loading,
+    TResult Function(TranslateSuccess value)? success,
+    TResult Function(TranslateError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -131,22 +131,22 @@ class _$TranslateStateCopyWithImpl<$Res, $Val extends TranslateState>
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res>
+abstract class _$$TranslateInitialImplCopyWith<$Res>
     implements $TranslateStateCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+  factory _$$TranslateInitialImplCopyWith(_$TranslateInitialImpl value,
+          $Res Function(_$TranslateInitialImpl) then) =
+      __$$TranslateInitialImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String translatedText});
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$TranslateStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$TranslateInitialImplCopyWithImpl<$Res>
+    extends _$TranslateStateCopyWithImpl<$Res, _$TranslateInitialImpl>
+    implements _$$TranslateInitialImplCopyWith<$Res> {
+  __$$TranslateInitialImplCopyWithImpl(_$TranslateInitialImpl _value,
+      $Res Function(_$TranslateInitialImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TranslateState
@@ -156,7 +156,7 @@ class __$$InitialImplCopyWithImpl<$Res>
   $Res call({
     Object? translatedText = null,
   }) {
-    return _then(_$InitialImpl(
+    return _then(_$TranslateInitialImpl(
       translatedText: null == translatedText
           ? _value.translatedText
           : translatedText // ignore: cast_nullable_to_non_nullable
@@ -167,12 +167,13 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl({required this.translatedText, final String? $type})
+class _$TranslateInitialImpl implements TranslateInitial {
+  const _$TranslateInitialImpl(
+      {required this.translatedText, final String? $type})
       : $type = $type ?? 'initial';
 
-  factory _$InitialImpl.fromJson(Map<String, dynamic> json) =>
-      _$$InitialImplFromJson(json);
+  factory _$TranslateInitialImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TranslateInitialImplFromJson(json);
 
   @override
   final String translatedText;
@@ -189,7 +190,7 @@ class _$InitialImpl implements _Initial {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InitialImpl &&
+            other is _$TranslateInitialImpl &&
             (identical(other.translatedText, translatedText) ||
                 other.translatedText == translatedText));
   }
@@ -203,8 +204,9 @@ class _$InitialImpl implements _Initial {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
-      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
+  _$$TranslateInitialImplCopyWith<_$TranslateInitialImpl> get copyWith =>
+      __$$TranslateInitialImplCopyWithImpl<_$TranslateInitialImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -246,10 +248,10 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Error value) error,
+    required TResult Function(TranslateInitial value) initial,
+    required TResult Function(TranslateLoading value) loading,
+    required TResult Function(TranslateSuccess value) success,
+    required TResult Function(TranslateError value) error,
   }) {
     return initial(this);
   }
@@ -257,10 +259,10 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Error value)? error,
+    TResult? Function(TranslateInitial value)? initial,
+    TResult? Function(TranslateLoading value)? loading,
+    TResult? Function(TranslateSuccess value)? success,
+    TResult? Function(TranslateError value)? error,
   }) {
     return initial?.call(this);
   }
@@ -268,10 +270,10 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Error value)? error,
+    TResult Function(TranslateInitial value)? initial,
+    TResult Function(TranslateLoading value)? loading,
+    TResult Function(TranslateSuccess value)? success,
+    TResult Function(TranslateError value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -282,17 +284,18 @@ class _$InitialImpl implements _Initial {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$InitialImplToJson(
+    return _$$TranslateInitialImplToJson(
       this,
     );
   }
 }
 
-abstract class _Initial implements TranslateState {
-  const factory _Initial({required final String translatedText}) =
-      _$InitialImpl;
+abstract class TranslateInitial implements TranslateState {
+  const factory TranslateInitial({required final String translatedText}) =
+      _$TranslateInitialImpl;
 
-  factory _Initial.fromJson(Map<String, dynamic> json) = _$InitialImpl.fromJson;
+  factory TranslateInitial.fromJson(Map<String, dynamic> json) =
+      _$TranslateInitialImpl.fromJson;
 
   @override
   String get translatedText;
@@ -301,27 +304,27 @@ abstract class _Initial implements TranslateState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+  _$$TranslateInitialImplCopyWith<_$TranslateInitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$LoadingImplCopyWith<$Res>
+abstract class _$$TranslateLoadingImplCopyWith<$Res>
     implements $TranslateStateCopyWith<$Res> {
-  factory _$$LoadingImplCopyWith(
-          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
-      __$$LoadingImplCopyWithImpl<$Res>;
+  factory _$$TranslateLoadingImplCopyWith(_$TranslateLoadingImpl value,
+          $Res Function(_$TranslateLoadingImpl) then) =
+      __$$TranslateLoadingImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String translatedText});
 }
 
 /// @nodoc
-class __$$LoadingImplCopyWithImpl<$Res>
-    extends _$TranslateStateCopyWithImpl<$Res, _$LoadingImpl>
-    implements _$$LoadingImplCopyWith<$Res> {
-  __$$LoadingImplCopyWithImpl(
-      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
+class __$$TranslateLoadingImplCopyWithImpl<$Res>
+    extends _$TranslateStateCopyWithImpl<$Res, _$TranslateLoadingImpl>
+    implements _$$TranslateLoadingImplCopyWith<$Res> {
+  __$$TranslateLoadingImplCopyWithImpl(_$TranslateLoadingImpl _value,
+      $Res Function(_$TranslateLoadingImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TranslateState
@@ -331,7 +334,7 @@ class __$$LoadingImplCopyWithImpl<$Res>
   $Res call({
     Object? translatedText = null,
   }) {
-    return _then(_$LoadingImpl(
+    return _then(_$TranslateLoadingImpl(
       translatedText: null == translatedText
           ? _value.translatedText
           : translatedText // ignore: cast_nullable_to_non_nullable
@@ -342,12 +345,13 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$LoadingImpl implements _Loading {
-  const _$LoadingImpl({required this.translatedText, final String? $type})
+class _$TranslateLoadingImpl implements TranslateLoading {
+  const _$TranslateLoadingImpl(
+      {required this.translatedText, final String? $type})
       : $type = $type ?? 'loading';
 
-  factory _$LoadingImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LoadingImplFromJson(json);
+  factory _$TranslateLoadingImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TranslateLoadingImplFromJson(json);
 
   @override
   final String translatedText;
@@ -364,7 +368,7 @@ class _$LoadingImpl implements _Loading {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoadingImpl &&
+            other is _$TranslateLoadingImpl &&
             (identical(other.translatedText, translatedText) ||
                 other.translatedText == translatedText));
   }
@@ -378,8 +382,9 @@ class _$LoadingImpl implements _Loading {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
-      __$$LoadingImplCopyWithImpl<_$LoadingImpl>(this, _$identity);
+  _$$TranslateLoadingImplCopyWith<_$TranslateLoadingImpl> get copyWith =>
+      __$$TranslateLoadingImplCopyWithImpl<_$TranslateLoadingImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -421,10 +426,10 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Error value) error,
+    required TResult Function(TranslateInitial value) initial,
+    required TResult Function(TranslateLoading value) loading,
+    required TResult Function(TranslateSuccess value) success,
+    required TResult Function(TranslateError value) error,
   }) {
     return loading(this);
   }
@@ -432,10 +437,10 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Error value)? error,
+    TResult? Function(TranslateInitial value)? initial,
+    TResult? Function(TranslateLoading value)? loading,
+    TResult? Function(TranslateSuccess value)? success,
+    TResult? Function(TranslateError value)? error,
   }) {
     return loading?.call(this);
   }
@@ -443,10 +448,10 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Error value)? error,
+    TResult Function(TranslateInitial value)? initial,
+    TResult Function(TranslateLoading value)? loading,
+    TResult Function(TranslateSuccess value)? success,
+    TResult Function(TranslateError value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -457,17 +462,18 @@ class _$LoadingImpl implements _Loading {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$LoadingImplToJson(
+    return _$$TranslateLoadingImplToJson(
       this,
     );
   }
 }
 
-abstract class _Loading implements TranslateState {
-  const factory _Loading({required final String translatedText}) =
-      _$LoadingImpl;
+abstract class TranslateLoading implements TranslateState {
+  const factory TranslateLoading({required final String translatedText}) =
+      _$TranslateLoadingImpl;
 
-  factory _Loading.fromJson(Map<String, dynamic> json) = _$LoadingImpl.fromJson;
+  factory TranslateLoading.fromJson(Map<String, dynamic> json) =
+      _$TranslateLoadingImpl.fromJson;
 
   @override
   String get translatedText;
@@ -476,27 +482,27 @@ abstract class _Loading implements TranslateState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LoadingImplCopyWith<_$LoadingImpl> get copyWith =>
+  _$$TranslateLoadingImplCopyWith<_$TranslateLoadingImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SuccessImplCopyWith<$Res>
+abstract class _$$TranslateSuccessImplCopyWith<$Res>
     implements $TranslateStateCopyWith<$Res> {
-  factory _$$SuccessImplCopyWith(
-          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
-      __$$SuccessImplCopyWithImpl<$Res>;
+  factory _$$TranslateSuccessImplCopyWith(_$TranslateSuccessImpl value,
+          $Res Function(_$TranslateSuccessImpl) then) =
+      __$$TranslateSuccessImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String translatedText});
 }
 
 /// @nodoc
-class __$$SuccessImplCopyWithImpl<$Res>
-    extends _$TranslateStateCopyWithImpl<$Res, _$SuccessImpl>
-    implements _$$SuccessImplCopyWith<$Res> {
-  __$$SuccessImplCopyWithImpl(
-      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
+class __$$TranslateSuccessImplCopyWithImpl<$Res>
+    extends _$TranslateStateCopyWithImpl<$Res, _$TranslateSuccessImpl>
+    implements _$$TranslateSuccessImplCopyWith<$Res> {
+  __$$TranslateSuccessImplCopyWithImpl(_$TranslateSuccessImpl _value,
+      $Res Function(_$TranslateSuccessImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TranslateState
@@ -506,7 +512,7 @@ class __$$SuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? translatedText = null,
   }) {
-    return _then(_$SuccessImpl(
+    return _then(_$TranslateSuccessImpl(
       translatedText: null == translatedText
           ? _value.translatedText
           : translatedText // ignore: cast_nullable_to_non_nullable
@@ -517,12 +523,13 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SuccessImpl implements _Success {
-  const _$SuccessImpl({required this.translatedText, final String? $type})
+class _$TranslateSuccessImpl implements TranslateSuccess {
+  const _$TranslateSuccessImpl(
+      {required this.translatedText, final String? $type})
       : $type = $type ?? 'success';
 
-  factory _$SuccessImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SuccessImplFromJson(json);
+  factory _$TranslateSuccessImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TranslateSuccessImplFromJson(json);
 
   @override
   final String translatedText;
@@ -539,7 +546,7 @@ class _$SuccessImpl implements _Success {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SuccessImpl &&
+            other is _$TranslateSuccessImpl &&
             (identical(other.translatedText, translatedText) ||
                 other.translatedText == translatedText));
   }
@@ -553,8 +560,9 @@ class _$SuccessImpl implements _Success {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
-      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
+  _$$TranslateSuccessImplCopyWith<_$TranslateSuccessImpl> get copyWith =>
+      __$$TranslateSuccessImplCopyWithImpl<_$TranslateSuccessImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -596,10 +604,10 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Error value) error,
+    required TResult Function(TranslateInitial value) initial,
+    required TResult Function(TranslateLoading value) loading,
+    required TResult Function(TranslateSuccess value) success,
+    required TResult Function(TranslateError value) error,
   }) {
     return success(this);
   }
@@ -607,10 +615,10 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Error value)? error,
+    TResult? Function(TranslateInitial value)? initial,
+    TResult? Function(TranslateLoading value)? loading,
+    TResult? Function(TranslateSuccess value)? success,
+    TResult? Function(TranslateError value)? error,
   }) {
     return success?.call(this);
   }
@@ -618,10 +626,10 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Error value)? error,
+    TResult Function(TranslateInitial value)? initial,
+    TResult Function(TranslateLoading value)? loading,
+    TResult Function(TranslateSuccess value)? success,
+    TResult Function(TranslateError value)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -632,17 +640,18 @@ class _$SuccessImpl implements _Success {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SuccessImplToJson(
+    return _$$TranslateSuccessImplToJson(
       this,
     );
   }
 }
 
-abstract class _Success implements TranslateState {
-  const factory _Success({required final String translatedText}) =
-      _$SuccessImpl;
+abstract class TranslateSuccess implements TranslateState {
+  const factory TranslateSuccess({required final String translatedText}) =
+      _$TranslateSuccessImpl;
 
-  factory _Success.fromJson(Map<String, dynamic> json) = _$SuccessImpl.fromJson;
+  factory TranslateSuccess.fromJson(Map<String, dynamic> json) =
+      _$TranslateSuccessImpl.fromJson;
 
   @override
   String get translatedText;
@@ -651,27 +660,27 @@ abstract class _Success implements TranslateState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+  _$$TranslateSuccessImplCopyWith<_$TranslateSuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ErrorImplCopyWith<$Res>
+abstract class _$$TranslateErrorImplCopyWith<$Res>
     implements $TranslateStateCopyWith<$Res> {
-  factory _$$ErrorImplCopyWith(
-          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
-      __$$ErrorImplCopyWithImpl<$Res>;
+  factory _$$TranslateErrorImplCopyWith(_$TranslateErrorImpl value,
+          $Res Function(_$TranslateErrorImpl) then) =
+      __$$TranslateErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String error, String translatedText});
 }
 
 /// @nodoc
-class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$TranslateStateCopyWithImpl<$Res, _$ErrorImpl>
-    implements _$$ErrorImplCopyWith<$Res> {
-  __$$ErrorImplCopyWithImpl(
-      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
+class __$$TranslateErrorImplCopyWithImpl<$Res>
+    extends _$TranslateStateCopyWithImpl<$Res, _$TranslateErrorImpl>
+    implements _$$TranslateErrorImplCopyWith<$Res> {
+  __$$TranslateErrorImplCopyWithImpl(
+      _$TranslateErrorImpl _value, $Res Function(_$TranslateErrorImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of TranslateState
@@ -682,7 +691,7 @@ class __$$ErrorImplCopyWithImpl<$Res>
     Object? error = null,
     Object? translatedText = null,
   }) {
-    return _then(_$ErrorImpl(
+    return _then(_$TranslateErrorImpl(
       error: null == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -697,13 +706,13 @@ class __$$ErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ErrorImpl implements _Error {
-  const _$ErrorImpl(
+class _$TranslateErrorImpl implements TranslateError {
+  const _$TranslateErrorImpl(
       {required this.error, required this.translatedText, final String? $type})
       : $type = $type ?? 'error';
 
-  factory _$ErrorImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ErrorImplFromJson(json);
+  factory _$TranslateErrorImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TranslateErrorImplFromJson(json);
 
   @override
   final String error;
@@ -722,7 +731,7 @@ class _$ErrorImpl implements _Error {
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ErrorImpl &&
+            other is _$TranslateErrorImpl &&
             (identical(other.error, error) || other.error == error) &&
             (identical(other.translatedText, translatedText) ||
                 other.translatedText == translatedText));
@@ -737,8 +746,9 @@ class _$ErrorImpl implements _Error {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
-      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
+  _$$TranslateErrorImplCopyWith<_$TranslateErrorImpl> get copyWith =>
+      __$$TranslateErrorImplCopyWithImpl<_$TranslateErrorImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -780,10 +790,10 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Error value) error,
+    required TResult Function(TranslateInitial value) initial,
+    required TResult Function(TranslateLoading value) loading,
+    required TResult Function(TranslateSuccess value) success,
+    required TResult Function(TranslateError value) error,
   }) {
     return error(this);
   }
@@ -791,10 +801,10 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Error value)? error,
+    TResult? Function(TranslateInitial value)? initial,
+    TResult? Function(TranslateLoading value)? loading,
+    TResult? Function(TranslateSuccess value)? success,
+    TResult? Function(TranslateError value)? error,
   }) {
     return error?.call(this);
   }
@@ -802,10 +812,10 @@ class _$ErrorImpl implements _Error {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Error value)? error,
+    TResult Function(TranslateInitial value)? initial,
+    TResult Function(TranslateLoading value)? loading,
+    TResult Function(TranslateSuccess value)? success,
+    TResult Function(TranslateError value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -816,18 +826,19 @@ class _$ErrorImpl implements _Error {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ErrorImplToJson(
+    return _$$TranslateErrorImplToJson(
       this,
     );
   }
 }
 
-abstract class _Error implements TranslateState {
-  const factory _Error(
+abstract class TranslateError implements TranslateState {
+  const factory TranslateError(
       {required final String error,
-      required final String translatedText}) = _$ErrorImpl;
+      required final String translatedText}) = _$TranslateErrorImpl;
 
-  factory _Error.fromJson(Map<String, dynamic> json) = _$ErrorImpl.fromJson;
+  factory TranslateError.fromJson(Map<String, dynamic> json) =
+      _$TranslateErrorImpl.fromJson;
 
   String get error;
   @override
@@ -837,6 +848,6 @@ abstract class _Error implements TranslateState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+  _$$TranslateErrorImplCopyWith<_$TranslateErrorImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
