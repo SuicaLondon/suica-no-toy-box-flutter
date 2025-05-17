@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:suica_no_toy_box_flutter/constants/dimensions.dart';
 import 'package:suica_no_toy_box_flutter/constants/form_keys.dart';
 import 'package:suica_no_toy_box_flutter/constants/languages.dart';
+import 'package:suica_no_toy_box_flutter/cubits/translate/translate_cubit.dart';
+import 'package:suica_no_toy_box_flutter/cubits/translate/translate_state.dart';
 import 'package:suica_no_toy_box_flutter/widgets/language_dropdown.dart';
 
 class TranslateScreen extends StatefulWidget {
@@ -55,7 +58,17 @@ class _TranslateScreenState extends State<TranslateScreen> {
     }
     final formState = _formKey.currentState;
     final values = formState?.value;
-    debugPrint(values.toString());
+    if (values == null) {
+      return;
+    }
+    final sourceLang = values[TranslateFormKeys.sourceLanguage];
+    final sourceText = values[TranslateFormKeys.sourceText];
+    final targetLang = values[TranslateFormKeys.targetLanguage];
+    context.read<TranslateCubit>().translate(
+          sourceLang: sourceLang,
+          sourceText: sourceText,
+          targetLang: targetLang,
+        );
   }
 
   @override
@@ -112,18 +125,25 @@ class _TranslateScreenState extends State<TranslateScreen> {
                   items: languages,
                 ),
                 Expanded(
-                  child: FormBuilderTextField(
-                    name: TranslateFormKeys.targetText,
-                    maxLines: null,
-                    expands: true,
-                    readOnly: true,
-                    textAlignVertical: TextAlignVertical.top,
-                    decoration: InputDecoration(
-                      hintText: 'Translation will appear here',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(Dimensions.sm),
-                        borderSide: BorderSide(
-                            color: Theme.of(context).colorScheme.outline),
+                  child: BlocListener<TranslateCubit, TranslateState>(
+                    listener: (context, state) {
+                      _formKey
+                          .currentState?.fields[TranslateFormKeys.targetText]
+                          ?.didChange(state.translatedText);
+                    },
+                    child: FormBuilderTextField(
+                      name: TranslateFormKeys.targetText,
+                      maxLines: null,
+                      expands: true,
+                      readOnly: true,
+                      textAlignVertical: TextAlignVertical.top,
+                      decoration: InputDecoration(
+                        hintText: 'Translation will appear here',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(Dimensions.sm),
+                          borderSide: BorderSide(
+                              color: Theme.of(context).colorScheme.outline),
+                        ),
                       ),
                     ),
                   ),
