@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:suica_no_toy_box_flutter/clients/sponsor/sponsor_response.dart';
 import 'package:suica_no_toy_box_flutter/constants/dimensions.dart';
-import 'package:suica_no_toy_box_flutter/screens/sponsor/company_tag.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class CompanyDetailCard extends StatelessWidget {
@@ -26,25 +25,26 @@ class CompanyDetailCard extends StatelessWidget {
               color: theme.colorScheme.onSurface,
             ),
           ),
-          Row(
-            spacing: Dimensions.sm,
-            children: [
-              CompanyTag(text: companyDetail.city),
-              if (companyDetail.county.isNotEmpty)
-                CompanyTag(text: companyDetail.county),
-            ],
-          ),
           Text(
-            'Type: ${companyDetail.type}',
+            '${companyDetail.city} ${companyDetail.county}',
             style: textTheme.bodyMedium?.copyWith(
               color: onSurfaceVariant,
             ),
           ),
-          Text(
-            'Rate: ${companyDetail.rate}',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                companyDetail.rate,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+              ),
+              Text(
+                companyDetail.type,
+                style: textTheme.bodyMedium?.copyWith(color: onSurfaceVariant),
+              ),
+            ],
           ),
           Text(
             'Website',
