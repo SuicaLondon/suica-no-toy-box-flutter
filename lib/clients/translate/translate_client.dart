@@ -9,7 +9,7 @@ class TranslateClient extends ApiClient {
   TranslateClient()
       : super(
           dio: Dio(BaseOptions(
-            baseUrl: apiUrl,
+            baseUrl: domain,
             responseType: ResponseType.stream,
             connectTimeout: const Duration(seconds: 5),
             receiveTimeout: const Duration(seconds: 3),
@@ -23,7 +23,7 @@ class TranslateClient extends ApiClient {
   }) async {
     try {
       final response = await dio.post(
-        '/translate',
+        '/api/translate',
         data: TranslateRequest(
           sourceLang: sourceLang,
           sourceText: sourceText,
