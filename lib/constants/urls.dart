@@ -1,1 +1,1 @@
-const String apiUrl = 'https://suica-no-toy-box.vercel.app/api';
+const String domain = 'https://suica-no-toy-box.vercel.app';

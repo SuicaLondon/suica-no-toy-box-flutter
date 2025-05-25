@@ -7,7 +7,7 @@ class ApiClient {
     Dio? dio,
   }) : _dio = dio ??
             Dio(BaseOptions(
-              baseUrl: apiUrl,
+              baseUrl: domain,
               connectTimeout: const Duration(seconds: 5),
               receiveTimeout: const Duration(seconds: 3),
             ));
