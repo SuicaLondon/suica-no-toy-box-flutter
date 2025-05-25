@@ -18,59 +18,80 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SponsorState {
   String get companyName => throw _privateConstructorUsedError;
   List<Company> get companies => throw _privateConstructorUsedError;
+  CompanyDetail? get selectedCompanyDetail =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         initial,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompaniesLoading,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompaniesSuccess,
-    required TResult Function(
-            String error, String companyName, List<Company> companies)
+    required TResult Function(String error, String companyName,
+            List<Company> companies, CompanyDetail? selectedCompanyDetail)
         fetchCompaniesError,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompanyDetailsLoading,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)
         fetchCompanyDetailsSuccess,
-    required TResult Function(
-            String error, String companyName, List<Company> companies)
+    required TResult Function(String error, String companyName,
+            List<Company> companies, CompanyDetail? selectedCompanyDetail)
         fetchCompanyDetailsError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String companyName, List<Company> companies)? initial,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
+        initial,
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesLoading,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesSuccess,
-    TResult? Function(
-            String error, String companyName, List<Company> companies)?
+    TResult? Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesError,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsLoading,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)?
         fetchCompanyDetailsSuccess,
-    TResult? Function(
-            String error, String companyName, List<Company> companies)?
+    TResult? Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String companyName, List<Company> companies)? initial,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
+        initial,
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesLoading,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesSuccess,
-    TResult Function(String error, String companyName, List<Company> companies)?
+    TResult Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesError,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsLoading,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)?
         fetchCompanyDetailsSuccess,
-    TResult Function(String error, String companyName, List<Company> companies)?
+    TResult Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsError,
     required TResult orElse(),
   }) =>
@@ -132,7 +153,12 @@ abstract class $SponsorStateCopyWith<$Res> {
           SponsorState value, $Res Function(SponsorState) then) =
       _$SponsorStateCopyWithImpl<$Res, SponsorState>;
   @useResult
-  $Res call({String companyName, List<Company> companies});
+  $Res call(
+      {String companyName,
+      List<Company> companies,
+      CompanyDetail selectedCompanyDetail});
+
+  $CompanyDetailCopyWith<$Res>? get selectedCompanyDetail;
 }
 
 /// @nodoc
@@ -152,6 +178,7 @@ class _$SponsorStateCopyWithImpl<$Res, $Val extends SponsorState>
   $Res call({
     Object? companyName = null,
     Object? companies = null,
+    Object? selectedCompanyDetail = null,
   }) {
     return _then(_value.copyWith(
       companyName: null == companyName
@@ -162,7 +189,25 @@ class _$SponsorStateCopyWithImpl<$Res, $Val extends SponsorState>
           ? _value.companies
           : companies // ignore: cast_nullable_to_non_nullable
               as List<Company>,
+      selectedCompanyDetail: null == selectedCompanyDetail
+          ? _value.selectedCompanyDetail!
+          : selectedCompanyDetail // ignore: cast_nullable_to_non_nullable
+              as CompanyDetail,
     ) as $Val);
+  }
+
+  /// Create a copy of SponsorState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CompanyDetailCopyWith<$Res>? get selectedCompanyDetail {
+    if (_value.selectedCompanyDetail == null) {
+      return null;
+    }
+
+    return $CompanyDetailCopyWith<$Res>(_value.selectedCompanyDetail!, (value) {
+      return _then(_value.copyWith(selectedCompanyDetail: value) as $Val);
+    });
   }
 }
 
@@ -174,7 +219,13 @@ abstract class _$$SponsorInitialImplCopyWith<$Res>
       __$$SponsorInitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String companyName, List<Company> companies});
+  $Res call(
+      {String companyName,
+      List<Company> companies,
+      CompanyDetail? selectedCompanyDetail});
+
+  @override
+  $CompanyDetailCopyWith<$Res>? get selectedCompanyDetail;
 }
 
 /// @nodoc
@@ -192,6 +243,7 @@ class __$$SponsorInitialImplCopyWithImpl<$Res>
   $Res call({
     Object? companyName = null,
     Object? companies = null,
+    Object? selectedCompanyDetail = freezed,
   }) {
     return _then(_$SponsorInitialImpl(
       companyName: null == companyName
@@ -202,6 +254,10 @@ class __$$SponsorInitialImplCopyWithImpl<$Res>
           ? _value._companies
           : companies // ignore: cast_nullable_to_non_nullable
               as List<Company>,
+      selectedCompanyDetail: freezed == selectedCompanyDetail
+          ? _value.selectedCompanyDetail
+          : selectedCompanyDetail // ignore: cast_nullable_to_non_nullable
+              as CompanyDetail?,
     ));
   }
 }
@@ -210,7 +266,9 @@ class __$$SponsorInitialImplCopyWithImpl<$Res>
 
 class _$SponsorInitialImpl implements SponsorInitial {
   const _$SponsorInitialImpl(
-      {this.companyName = '', final List<Company> companies = const []})
+      {this.companyName = '',
+      final List<Company> companies = const [],
+      this.selectedCompanyDetail = null})
       : _companies = companies;
 
   @override
@@ -226,8 +284,12 @@ class _$SponsorInitialImpl implements SponsorInitial {
   }
 
   @override
+  @JsonKey()
+  final CompanyDetail? selectedCompanyDetail;
+
+  @override
   String toString() {
-    return 'SponsorState.initial(companyName: $companyName, companies: $companies)';
+    return 'SponsorState.initial(companyName: $companyName, companies: $companies, selectedCompanyDetail: $selectedCompanyDetail)';
   }
 
   @override
@@ -238,12 +300,14 @@ class _$SponsorInitialImpl implements SponsorInitial {
             (identical(other.companyName, companyName) ||
                 other.companyName == companyName) &&
             const DeepCollectionEquality()
-                .equals(other._companies, _companies));
+                .equals(other._companies, _companies) &&
+            (identical(other.selectedCompanyDetail, selectedCompanyDetail) ||
+                other.selectedCompanyDetail == selectedCompanyDetail));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, companyName,
-      const DeepCollectionEquality().hash(_companies));
+      const DeepCollectionEquality().hash(_companies), selectedCompanyDetail);
 
   /// Create a copy of SponsorState
   /// with the given fields replaced by the non-null parameter values.
@@ -257,68 +321,87 @@ class _$SponsorInitialImpl implements SponsorInitial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         initial,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompaniesLoading,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompaniesSuccess,
-    required TResult Function(
-            String error, String companyName, List<Company> companies)
+    required TResult Function(String error, String companyName,
+            List<Company> companies, CompanyDetail? selectedCompanyDetail)
         fetchCompaniesError,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompanyDetailsLoading,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)
         fetchCompanyDetailsSuccess,
-    required TResult Function(
-            String error, String companyName, List<Company> companies)
+    required TResult Function(String error, String companyName,
+            List<Company> companies, CompanyDetail? selectedCompanyDetail)
         fetchCompanyDetailsError,
   }) {
-    return initial(companyName, companies);
+    return initial(companyName, companies, selectedCompanyDetail);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String companyName, List<Company> companies)? initial,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
+        initial,
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesLoading,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesSuccess,
-    TResult? Function(
-            String error, String companyName, List<Company> companies)?
+    TResult? Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesError,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsLoading,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)?
         fetchCompanyDetailsSuccess,
-    TResult? Function(
-            String error, String companyName, List<Company> companies)?
+    TResult? Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsError,
   }) {
-    return initial?.call(companyName, companies);
+    return initial?.call(companyName, companies, selectedCompanyDetail);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String companyName, List<Company> companies)? initial,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
+        initial,
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesLoading,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesSuccess,
-    TResult Function(String error, String companyName, List<Company> companies)?
+    TResult Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesError,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsLoading,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)?
         fetchCompanyDetailsSuccess,
-    TResult Function(String error, String companyName, List<Company> companies)?
+    TResult Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsError,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(companyName, companies);
+      return initial(companyName, companies, selectedCompanyDetail);
     }
     return orElse();
   }
@@ -382,12 +465,15 @@ class _$SponsorInitialImpl implements SponsorInitial {
 abstract class SponsorInitial implements SponsorState {
   const factory SponsorInitial(
       {final String companyName,
-      final List<Company> companies}) = _$SponsorInitialImpl;
+      final List<Company> companies,
+      final CompanyDetail? selectedCompanyDetail}) = _$SponsorInitialImpl;
 
   @override
   String get companyName;
   @override
   List<Company> get companies;
+  @override
+  CompanyDetail? get selectedCompanyDetail;
 
   /// Create a copy of SponsorState
   /// with the given fields replaced by the non-null parameter values.
@@ -406,7 +492,13 @@ abstract class _$$FetchCompaniesLoadingImplCopyWith<$Res>
       __$$FetchCompaniesLoadingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String companyName, List<Company> companies});
+  $Res call(
+      {String companyName,
+      List<Company> companies,
+      CompanyDetail? selectedCompanyDetail});
+
+  @override
+  $CompanyDetailCopyWith<$Res>? get selectedCompanyDetail;
 }
 
 /// @nodoc
@@ -424,6 +516,7 @@ class __$$FetchCompaniesLoadingImplCopyWithImpl<$Res>
   $Res call({
     Object? companyName = null,
     Object? companies = null,
+    Object? selectedCompanyDetail = freezed,
   }) {
     return _then(_$FetchCompaniesLoadingImpl(
       companyName: null == companyName
@@ -434,6 +527,10 @@ class __$$FetchCompaniesLoadingImplCopyWithImpl<$Res>
           ? _value._companies
           : companies // ignore: cast_nullable_to_non_nullable
               as List<Company>,
+      selectedCompanyDetail: freezed == selectedCompanyDetail
+          ? _value.selectedCompanyDetail
+          : selectedCompanyDetail // ignore: cast_nullable_to_non_nullable
+              as CompanyDetail?,
     ));
   }
 }
@@ -442,7 +539,9 @@ class __$$FetchCompaniesLoadingImplCopyWithImpl<$Res>
 
 class _$FetchCompaniesLoadingImpl implements FetchCompaniesLoading {
   const _$FetchCompaniesLoadingImpl(
-      {required this.companyName, required final List<Company> companies})
+      {required this.companyName,
+      required final List<Company> companies,
+      this.selectedCompanyDetail = null})
       : _companies = companies;
 
   @override
@@ -456,8 +555,12 @@ class _$FetchCompaniesLoadingImpl implements FetchCompaniesLoading {
   }
 
   @override
+  @JsonKey()
+  final CompanyDetail? selectedCompanyDetail;
+
+  @override
   String toString() {
-    return 'SponsorState.fetchCompaniesLoading(companyName: $companyName, companies: $companies)';
+    return 'SponsorState.fetchCompaniesLoading(companyName: $companyName, companies: $companies, selectedCompanyDetail: $selectedCompanyDetail)';
   }
 
   @override
@@ -468,12 +571,14 @@ class _$FetchCompaniesLoadingImpl implements FetchCompaniesLoading {
             (identical(other.companyName, companyName) ||
                 other.companyName == companyName) &&
             const DeepCollectionEquality()
-                .equals(other._companies, _companies));
+                .equals(other._companies, _companies) &&
+            (identical(other.selectedCompanyDetail, selectedCompanyDetail) ||
+                other.selectedCompanyDetail == selectedCompanyDetail));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, companyName,
-      const DeepCollectionEquality().hash(_companies));
+      const DeepCollectionEquality().hash(_companies), selectedCompanyDetail);
 
   /// Create a copy of SponsorState
   /// with the given fields replaced by the non-null parameter values.
@@ -487,68 +592,89 @@ class _$FetchCompaniesLoadingImpl implements FetchCompaniesLoading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         initial,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompaniesLoading,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompaniesSuccess,
-    required TResult Function(
-            String error, String companyName, List<Company> companies)
+    required TResult Function(String error, String companyName,
+            List<Company> companies, CompanyDetail? selectedCompanyDetail)
         fetchCompaniesError,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompanyDetailsLoading,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)
         fetchCompanyDetailsSuccess,
-    required TResult Function(
-            String error, String companyName, List<Company> companies)
+    required TResult Function(String error, String companyName,
+            List<Company> companies, CompanyDetail? selectedCompanyDetail)
         fetchCompanyDetailsError,
   }) {
-    return fetchCompaniesLoading(companyName, companies);
+    return fetchCompaniesLoading(companyName, companies, selectedCompanyDetail);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String companyName, List<Company> companies)? initial,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
+        initial,
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesLoading,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesSuccess,
-    TResult? Function(
-            String error, String companyName, List<Company> companies)?
+    TResult? Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesError,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsLoading,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)?
         fetchCompanyDetailsSuccess,
-    TResult? Function(
-            String error, String companyName, List<Company> companies)?
+    TResult? Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsError,
   }) {
-    return fetchCompaniesLoading?.call(companyName, companies);
+    return fetchCompaniesLoading?.call(
+        companyName, companies, selectedCompanyDetail);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String companyName, List<Company> companies)? initial,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
+        initial,
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesLoading,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesSuccess,
-    TResult Function(String error, String companyName, List<Company> companies)?
+    TResult Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesError,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsLoading,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)?
         fetchCompanyDetailsSuccess,
-    TResult Function(String error, String companyName, List<Company> companies)?
+    TResult Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsError,
     required TResult orElse(),
   }) {
     if (fetchCompaniesLoading != null) {
-      return fetchCompaniesLoading(companyName, companies);
+      return fetchCompaniesLoading(
+          companyName, companies, selectedCompanyDetail);
     }
     return orElse();
   }
@@ -611,13 +737,17 @@ class _$FetchCompaniesLoadingImpl implements FetchCompaniesLoading {
 
 abstract class FetchCompaniesLoading implements SponsorState {
   const factory FetchCompaniesLoading(
-      {required final String companyName,
-      required final List<Company> companies}) = _$FetchCompaniesLoadingImpl;
+          {required final String companyName,
+          required final List<Company> companies,
+          final CompanyDetail? selectedCompanyDetail}) =
+      _$FetchCompaniesLoadingImpl;
 
   @override
   String get companyName;
   @override
   List<Company> get companies;
+  @override
+  CompanyDetail? get selectedCompanyDetail;
 
   /// Create a copy of SponsorState
   /// with the given fields replaced by the non-null parameter values.
@@ -636,7 +766,13 @@ abstract class _$$FetchCompaniesSuccessImplCopyWith<$Res>
       __$$FetchCompaniesSuccessImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String companyName, List<Company> companies});
+  $Res call(
+      {String companyName,
+      List<Company> companies,
+      CompanyDetail? selectedCompanyDetail});
+
+  @override
+  $CompanyDetailCopyWith<$Res>? get selectedCompanyDetail;
 }
 
 /// @nodoc
@@ -654,6 +790,7 @@ class __$$FetchCompaniesSuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? companyName = null,
     Object? companies = null,
+    Object? selectedCompanyDetail = freezed,
   }) {
     return _then(_$FetchCompaniesSuccessImpl(
       companyName: null == companyName
@@ -664,6 +801,10 @@ class __$$FetchCompaniesSuccessImplCopyWithImpl<$Res>
           ? _value._companies
           : companies // ignore: cast_nullable_to_non_nullable
               as List<Company>,
+      selectedCompanyDetail: freezed == selectedCompanyDetail
+          ? _value.selectedCompanyDetail
+          : selectedCompanyDetail // ignore: cast_nullable_to_non_nullable
+              as CompanyDetail?,
     ));
   }
 }
@@ -672,7 +813,9 @@ class __$$FetchCompaniesSuccessImplCopyWithImpl<$Res>
 
 class _$FetchCompaniesSuccessImpl implements FetchCompaniesSuccess {
   const _$FetchCompaniesSuccessImpl(
-      {required this.companyName, required final List<Company> companies})
+      {required this.companyName,
+      required final List<Company> companies,
+      this.selectedCompanyDetail = null})
       : _companies = companies;
 
   @override
@@ -686,8 +829,12 @@ class _$FetchCompaniesSuccessImpl implements FetchCompaniesSuccess {
   }
 
   @override
+  @JsonKey()
+  final CompanyDetail? selectedCompanyDetail;
+
+  @override
   String toString() {
-    return 'SponsorState.fetchCompaniesSuccess(companyName: $companyName, companies: $companies)';
+    return 'SponsorState.fetchCompaniesSuccess(companyName: $companyName, companies: $companies, selectedCompanyDetail: $selectedCompanyDetail)';
   }
 
   @override
@@ -698,12 +845,14 @@ class _$FetchCompaniesSuccessImpl implements FetchCompaniesSuccess {
             (identical(other.companyName, companyName) ||
                 other.companyName == companyName) &&
             const DeepCollectionEquality()
-                .equals(other._companies, _companies));
+                .equals(other._companies, _companies) &&
+            (identical(other.selectedCompanyDetail, selectedCompanyDetail) ||
+                other.selectedCompanyDetail == selectedCompanyDetail));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, companyName,
-      const DeepCollectionEquality().hash(_companies));
+      const DeepCollectionEquality().hash(_companies), selectedCompanyDetail);
 
   /// Create a copy of SponsorState
   /// with the given fields replaced by the non-null parameter values.
@@ -717,68 +866,89 @@ class _$FetchCompaniesSuccessImpl implements FetchCompaniesSuccess {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         initial,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompaniesLoading,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompaniesSuccess,
-    required TResult Function(
-            String error, String companyName, List<Company> companies)
+    required TResult Function(String error, String companyName,
+            List<Company> companies, CompanyDetail? selectedCompanyDetail)
         fetchCompaniesError,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompanyDetailsLoading,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)
         fetchCompanyDetailsSuccess,
-    required TResult Function(
-            String error, String companyName, List<Company> companies)
+    required TResult Function(String error, String companyName,
+            List<Company> companies, CompanyDetail? selectedCompanyDetail)
         fetchCompanyDetailsError,
   }) {
-    return fetchCompaniesSuccess(companyName, companies);
+    return fetchCompaniesSuccess(companyName, companies, selectedCompanyDetail);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String companyName, List<Company> companies)? initial,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
+        initial,
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesLoading,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesSuccess,
-    TResult? Function(
-            String error, String companyName, List<Company> companies)?
+    TResult? Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesError,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsLoading,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)?
         fetchCompanyDetailsSuccess,
-    TResult? Function(
-            String error, String companyName, List<Company> companies)?
+    TResult? Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsError,
   }) {
-    return fetchCompaniesSuccess?.call(companyName, companies);
+    return fetchCompaniesSuccess?.call(
+        companyName, companies, selectedCompanyDetail);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String companyName, List<Company> companies)? initial,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
+        initial,
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesLoading,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesSuccess,
-    TResult Function(String error, String companyName, List<Company> companies)?
+    TResult Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesError,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsLoading,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)?
         fetchCompanyDetailsSuccess,
-    TResult Function(String error, String companyName, List<Company> companies)?
+    TResult Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsError,
     required TResult orElse(),
   }) {
     if (fetchCompaniesSuccess != null) {
-      return fetchCompaniesSuccess(companyName, companies);
+      return fetchCompaniesSuccess(
+          companyName, companies, selectedCompanyDetail);
     }
     return orElse();
   }
@@ -841,13 +1011,17 @@ class _$FetchCompaniesSuccessImpl implements FetchCompaniesSuccess {
 
 abstract class FetchCompaniesSuccess implements SponsorState {
   const factory FetchCompaniesSuccess(
-      {required final String companyName,
-      required final List<Company> companies}) = _$FetchCompaniesSuccessImpl;
+          {required final String companyName,
+          required final List<Company> companies,
+          final CompanyDetail? selectedCompanyDetail}) =
+      _$FetchCompaniesSuccessImpl;
 
   @override
   String get companyName;
   @override
   List<Company> get companies;
+  @override
+  CompanyDetail? get selectedCompanyDetail;
 
   /// Create a copy of SponsorState
   /// with the given fields replaced by the non-null parameter values.
@@ -865,7 +1039,14 @@ abstract class _$$FetchCompaniesErrorImplCopyWith<$Res>
       __$$FetchCompaniesErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String error, String companyName, List<Company> companies});
+  $Res call(
+      {String error,
+      String companyName,
+      List<Company> companies,
+      CompanyDetail? selectedCompanyDetail});
+
+  @override
+  $CompanyDetailCopyWith<$Res>? get selectedCompanyDetail;
 }
 
 /// @nodoc
@@ -884,6 +1065,7 @@ class __$$FetchCompaniesErrorImplCopyWithImpl<$Res>
     Object? error = null,
     Object? companyName = null,
     Object? companies = null,
+    Object? selectedCompanyDetail = freezed,
   }) {
     return _then(_$FetchCompaniesErrorImpl(
       error: null == error
@@ -898,6 +1080,10 @@ class __$$FetchCompaniesErrorImplCopyWithImpl<$Res>
           ? _value._companies
           : companies // ignore: cast_nullable_to_non_nullable
               as List<Company>,
+      selectedCompanyDetail: freezed == selectedCompanyDetail
+          ? _value.selectedCompanyDetail
+          : selectedCompanyDetail // ignore: cast_nullable_to_non_nullable
+              as CompanyDetail?,
     ));
   }
 }
@@ -908,7 +1094,8 @@ class _$FetchCompaniesErrorImpl implements FetchCompaniesError {
   const _$FetchCompaniesErrorImpl(
       {required this.error,
       this.companyName = '',
-      final List<Company> companies = const []})
+      final List<Company> companies = const [],
+      this.selectedCompanyDetail = null})
       : _companies = companies;
 
   @override
@@ -926,8 +1113,12 @@ class _$FetchCompaniesErrorImpl implements FetchCompaniesError {
   }
 
   @override
+  @JsonKey()
+  final CompanyDetail? selectedCompanyDetail;
+
+  @override
   String toString() {
-    return 'SponsorState.fetchCompaniesError(error: $error, companyName: $companyName, companies: $companies)';
+    return 'SponsorState.fetchCompaniesError(error: $error, companyName: $companyName, companies: $companies, selectedCompanyDetail: $selectedCompanyDetail)';
   }
 
   @override
@@ -939,12 +1130,14 @@ class _$FetchCompaniesErrorImpl implements FetchCompaniesError {
             (identical(other.companyName, companyName) ||
                 other.companyName == companyName) &&
             const DeepCollectionEquality()
-                .equals(other._companies, _companies));
+                .equals(other._companies, _companies) &&
+            (identical(other.selectedCompanyDetail, selectedCompanyDetail) ||
+                other.selectedCompanyDetail == selectedCompanyDetail));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, error, companyName,
-      const DeepCollectionEquality().hash(_companies));
+      const DeepCollectionEquality().hash(_companies), selectedCompanyDetail);
 
   /// Create a copy of SponsorState
   /// with the given fields replaced by the non-null parameter values.
@@ -958,68 +1151,90 @@ class _$FetchCompaniesErrorImpl implements FetchCompaniesError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         initial,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompaniesLoading,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompaniesSuccess,
-    required TResult Function(
-            String error, String companyName, List<Company> companies)
+    required TResult Function(String error, String companyName,
+            List<Company> companies, CompanyDetail? selectedCompanyDetail)
         fetchCompaniesError,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompanyDetailsLoading,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)
         fetchCompanyDetailsSuccess,
-    required TResult Function(
-            String error, String companyName, List<Company> companies)
+    required TResult Function(String error, String companyName,
+            List<Company> companies, CompanyDetail? selectedCompanyDetail)
         fetchCompanyDetailsError,
   }) {
-    return fetchCompaniesError(error, companyName, companies);
+    return fetchCompaniesError(
+        error, companyName, companies, selectedCompanyDetail);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String companyName, List<Company> companies)? initial,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
+        initial,
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesLoading,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesSuccess,
-    TResult? Function(
-            String error, String companyName, List<Company> companies)?
+    TResult? Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesError,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsLoading,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)?
         fetchCompanyDetailsSuccess,
-    TResult? Function(
-            String error, String companyName, List<Company> companies)?
+    TResult? Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsError,
   }) {
-    return fetchCompaniesError?.call(error, companyName, companies);
+    return fetchCompaniesError?.call(
+        error, companyName, companies, selectedCompanyDetail);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String companyName, List<Company> companies)? initial,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
+        initial,
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesLoading,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesSuccess,
-    TResult Function(String error, String companyName, List<Company> companies)?
+    TResult Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesError,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsLoading,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)?
         fetchCompanyDetailsSuccess,
-    TResult Function(String error, String companyName, List<Company> companies)?
+    TResult Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsError,
     required TResult orElse(),
   }) {
     if (fetchCompaniesError != null) {
-      return fetchCompaniesError(error, companyName, companies);
+      return fetchCompaniesError(
+          error, companyName, companies, selectedCompanyDetail);
     }
     return orElse();
   }
@@ -1084,13 +1299,16 @@ abstract class FetchCompaniesError implements SponsorState {
   const factory FetchCompaniesError(
       {required final String error,
       final String companyName,
-      final List<Company> companies}) = _$FetchCompaniesErrorImpl;
+      final List<Company> companies,
+      final CompanyDetail? selectedCompanyDetail}) = _$FetchCompaniesErrorImpl;
 
   String get error;
   @override
   String get companyName;
   @override
   List<Company> get companies;
+  @override
+  CompanyDetail? get selectedCompanyDetail;
 
   /// Create a copy of SponsorState
   /// with the given fields replaced by the non-null parameter values.
@@ -1109,7 +1327,13 @@ abstract class _$$FetchCompanyDetailsLoadingImplCopyWith<$Res>
       __$$FetchCompanyDetailsLoadingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String companyName, List<Company> companies});
+  $Res call(
+      {String companyName,
+      List<Company> companies,
+      CompanyDetail? selectedCompanyDetail});
+
+  @override
+  $CompanyDetailCopyWith<$Res>? get selectedCompanyDetail;
 }
 
 /// @nodoc
@@ -1128,6 +1352,7 @@ class __$$FetchCompanyDetailsLoadingImplCopyWithImpl<$Res>
   $Res call({
     Object? companyName = null,
     Object? companies = null,
+    Object? selectedCompanyDetail = freezed,
   }) {
     return _then(_$FetchCompanyDetailsLoadingImpl(
       companyName: null == companyName
@@ -1138,6 +1363,10 @@ class __$$FetchCompanyDetailsLoadingImplCopyWithImpl<$Res>
           ? _value._companies
           : companies // ignore: cast_nullable_to_non_nullable
               as List<Company>,
+      selectedCompanyDetail: freezed == selectedCompanyDetail
+          ? _value.selectedCompanyDetail
+          : selectedCompanyDetail // ignore: cast_nullable_to_non_nullable
+              as CompanyDetail?,
     ));
   }
 }
@@ -1146,14 +1375,15 @@ class __$$FetchCompanyDetailsLoadingImplCopyWithImpl<$Res>
 
 class _$FetchCompanyDetailsLoadingImpl implements FetchCompanyDetailsLoading {
   const _$FetchCompanyDetailsLoadingImpl(
-      {required this.companyName, final List<Company> companies = const []})
+      {required this.companyName,
+      required final List<Company> companies,
+      this.selectedCompanyDetail = null})
       : _companies = companies;
 
   @override
   final String companyName;
   final List<Company> _companies;
   @override
-  @JsonKey()
   List<Company> get companies {
     if (_companies is EqualUnmodifiableListView) return _companies;
     // ignore: implicit_dynamic_type
@@ -1161,8 +1391,12 @@ class _$FetchCompanyDetailsLoadingImpl implements FetchCompanyDetailsLoading {
   }
 
   @override
+  @JsonKey()
+  final CompanyDetail? selectedCompanyDetail;
+
+  @override
   String toString() {
-    return 'SponsorState.fetchCompanyDetailsLoading(companyName: $companyName, companies: $companies)';
+    return 'SponsorState.fetchCompanyDetailsLoading(companyName: $companyName, companies: $companies, selectedCompanyDetail: $selectedCompanyDetail)';
   }
 
   @override
@@ -1173,12 +1407,14 @@ class _$FetchCompanyDetailsLoadingImpl implements FetchCompanyDetailsLoading {
             (identical(other.companyName, companyName) ||
                 other.companyName == companyName) &&
             const DeepCollectionEquality()
-                .equals(other._companies, _companies));
+                .equals(other._companies, _companies) &&
+            (identical(other.selectedCompanyDetail, selectedCompanyDetail) ||
+                other.selectedCompanyDetail == selectedCompanyDetail));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, companyName,
-      const DeepCollectionEquality().hash(_companies));
+      const DeepCollectionEquality().hash(_companies), selectedCompanyDetail);
 
   /// Create a copy of SponsorState
   /// with the given fields replaced by the non-null parameter values.
@@ -1192,68 +1428,90 @@ class _$FetchCompanyDetailsLoadingImpl implements FetchCompanyDetailsLoading {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         initial,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompaniesLoading,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompaniesSuccess,
-    required TResult Function(
-            String error, String companyName, List<Company> companies)
+    required TResult Function(String error, String companyName,
+            List<Company> companies, CompanyDetail? selectedCompanyDetail)
         fetchCompaniesError,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompanyDetailsLoading,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)
         fetchCompanyDetailsSuccess,
-    required TResult Function(
-            String error, String companyName, List<Company> companies)
+    required TResult Function(String error, String companyName,
+            List<Company> companies, CompanyDetail? selectedCompanyDetail)
         fetchCompanyDetailsError,
   }) {
-    return fetchCompanyDetailsLoading(companyName, companies);
+    return fetchCompanyDetailsLoading(
+        companyName, companies, selectedCompanyDetail);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String companyName, List<Company> companies)? initial,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
+        initial,
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesLoading,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesSuccess,
-    TResult? Function(
-            String error, String companyName, List<Company> companies)?
+    TResult? Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesError,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsLoading,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)?
         fetchCompanyDetailsSuccess,
-    TResult? Function(
-            String error, String companyName, List<Company> companies)?
+    TResult? Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsError,
   }) {
-    return fetchCompanyDetailsLoading?.call(companyName, companies);
+    return fetchCompanyDetailsLoading?.call(
+        companyName, companies, selectedCompanyDetail);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String companyName, List<Company> companies)? initial,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
+        initial,
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesLoading,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesSuccess,
-    TResult Function(String error, String companyName, List<Company> companies)?
+    TResult Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesError,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsLoading,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)?
         fetchCompanyDetailsSuccess,
-    TResult Function(String error, String companyName, List<Company> companies)?
+    TResult Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsError,
     required TResult orElse(),
   }) {
     if (fetchCompanyDetailsLoading != null) {
-      return fetchCompanyDetailsLoading(companyName, companies);
+      return fetchCompanyDetailsLoading(
+          companyName, companies, selectedCompanyDetail);
     }
     return orElse();
   }
@@ -1316,13 +1574,17 @@ class _$FetchCompanyDetailsLoadingImpl implements FetchCompanyDetailsLoading {
 
 abstract class FetchCompanyDetailsLoading implements SponsorState {
   const factory FetchCompanyDetailsLoading(
-      {required final String companyName,
-      final List<Company> companies}) = _$FetchCompanyDetailsLoadingImpl;
+          {required final String companyName,
+          required final List<Company> companies,
+          final CompanyDetail? selectedCompanyDetail}) =
+      _$FetchCompanyDetailsLoadingImpl;
 
   @override
   String get companyName;
   @override
   List<Company> get companies;
+  @override
+  CompanyDetail? get selectedCompanyDetail;
 
   /// Create a copy of SponsorState
   /// with the given fields replaced by the non-null parameter values.
@@ -1341,7 +1603,13 @@ abstract class _$$FetchCompanyDetailsSuccessImplCopyWith<$Res>
       __$$FetchCompanyDetailsSuccessImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String companyName, List<Company> companies});
+  $Res call(
+      {String companyName,
+      List<Company> companies,
+      CompanyDetail selectedCompanyDetail});
+
+  @override
+  $CompanyDetailCopyWith<$Res> get selectedCompanyDetail;
 }
 
 /// @nodoc
@@ -1360,6 +1628,7 @@ class __$$FetchCompanyDetailsSuccessImplCopyWithImpl<$Res>
   $Res call({
     Object? companyName = null,
     Object? companies = null,
+    Object? selectedCompanyDetail = null,
   }) {
     return _then(_$FetchCompanyDetailsSuccessImpl(
       companyName: null == companyName
@@ -1370,7 +1639,21 @@ class __$$FetchCompanyDetailsSuccessImplCopyWithImpl<$Res>
           ? _value._companies
           : companies // ignore: cast_nullable_to_non_nullable
               as List<Company>,
+      selectedCompanyDetail: null == selectedCompanyDetail
+          ? _value.selectedCompanyDetail
+          : selectedCompanyDetail // ignore: cast_nullable_to_non_nullable
+              as CompanyDetail,
     ));
+  }
+
+  /// Create a copy of SponsorState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CompanyDetailCopyWith<$Res> get selectedCompanyDetail {
+    return $CompanyDetailCopyWith<$Res>(_value.selectedCompanyDetail, (value) {
+      return _then(_value.copyWith(selectedCompanyDetail: value));
+    });
   }
 }
 
@@ -1378,14 +1661,15 @@ class __$$FetchCompanyDetailsSuccessImplCopyWithImpl<$Res>
 
 class _$FetchCompanyDetailsSuccessImpl implements FetchCompanyDetailsSuccess {
   const _$FetchCompanyDetailsSuccessImpl(
-      {required this.companyName, final List<Company> companies = const []})
+      {required this.companyName,
+      required final List<Company> companies,
+      required this.selectedCompanyDetail})
       : _companies = companies;
 
   @override
   final String companyName;
   final List<Company> _companies;
   @override
-  @JsonKey()
   List<Company> get companies {
     if (_companies is EqualUnmodifiableListView) return _companies;
     // ignore: implicit_dynamic_type
@@ -1393,8 +1677,11 @@ class _$FetchCompanyDetailsSuccessImpl implements FetchCompanyDetailsSuccess {
   }
 
   @override
+  final CompanyDetail selectedCompanyDetail;
+
+  @override
   String toString() {
-    return 'SponsorState.fetchCompanyDetailsSuccess(companyName: $companyName, companies: $companies)';
+    return 'SponsorState.fetchCompanyDetailsSuccess(companyName: $companyName, companies: $companies, selectedCompanyDetail: $selectedCompanyDetail)';
   }
 
   @override
@@ -1405,12 +1692,14 @@ class _$FetchCompanyDetailsSuccessImpl implements FetchCompanyDetailsSuccess {
             (identical(other.companyName, companyName) ||
                 other.companyName == companyName) &&
             const DeepCollectionEquality()
-                .equals(other._companies, _companies));
+                .equals(other._companies, _companies) &&
+            (identical(other.selectedCompanyDetail, selectedCompanyDetail) ||
+                other.selectedCompanyDetail == selectedCompanyDetail));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, companyName,
-      const DeepCollectionEquality().hash(_companies));
+      const DeepCollectionEquality().hash(_companies), selectedCompanyDetail);
 
   /// Create a copy of SponsorState
   /// with the given fields replaced by the non-null parameter values.
@@ -1424,68 +1713,90 @@ class _$FetchCompanyDetailsSuccessImpl implements FetchCompanyDetailsSuccess {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         initial,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompaniesLoading,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompaniesSuccess,
-    required TResult Function(
-            String error, String companyName, List<Company> companies)
+    required TResult Function(String error, String companyName,
+            List<Company> companies, CompanyDetail? selectedCompanyDetail)
         fetchCompaniesError,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompanyDetailsLoading,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)
         fetchCompanyDetailsSuccess,
-    required TResult Function(
-            String error, String companyName, List<Company> companies)
+    required TResult Function(String error, String companyName,
+            List<Company> companies, CompanyDetail? selectedCompanyDetail)
         fetchCompanyDetailsError,
   }) {
-    return fetchCompanyDetailsSuccess(companyName, companies);
+    return fetchCompanyDetailsSuccess(
+        companyName, companies, selectedCompanyDetail);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String companyName, List<Company> companies)? initial,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
+        initial,
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesLoading,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesSuccess,
-    TResult? Function(
-            String error, String companyName, List<Company> companies)?
+    TResult? Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesError,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsLoading,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)?
         fetchCompanyDetailsSuccess,
-    TResult? Function(
-            String error, String companyName, List<Company> companies)?
+    TResult? Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsError,
   }) {
-    return fetchCompanyDetailsSuccess?.call(companyName, companies);
+    return fetchCompanyDetailsSuccess?.call(
+        companyName, companies, selectedCompanyDetail);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String companyName, List<Company> companies)? initial,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
+        initial,
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesLoading,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesSuccess,
-    TResult Function(String error, String companyName, List<Company> companies)?
+    TResult Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesError,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsLoading,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)?
         fetchCompanyDetailsSuccess,
-    TResult Function(String error, String companyName, List<Company> companies)?
+    TResult Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsError,
     required TResult orElse(),
   }) {
     if (fetchCompanyDetailsSuccess != null) {
-      return fetchCompanyDetailsSuccess(companyName, companies);
+      return fetchCompanyDetailsSuccess(
+          companyName, companies, selectedCompanyDetail);
     }
     return orElse();
   }
@@ -1548,13 +1859,17 @@ class _$FetchCompanyDetailsSuccessImpl implements FetchCompanyDetailsSuccess {
 
 abstract class FetchCompanyDetailsSuccess implements SponsorState {
   const factory FetchCompanyDetailsSuccess(
-      {required final String companyName,
-      final List<Company> companies}) = _$FetchCompanyDetailsSuccessImpl;
+          {required final String companyName,
+          required final List<Company> companies,
+          required final CompanyDetail selectedCompanyDetail}) =
+      _$FetchCompanyDetailsSuccessImpl;
 
   @override
   String get companyName;
   @override
   List<Company> get companies;
+  @override
+  CompanyDetail get selectedCompanyDetail;
 
   /// Create a copy of SponsorState
   /// with the given fields replaced by the non-null parameter values.
@@ -1573,7 +1888,14 @@ abstract class _$$FetchCompanyDetailsErrorImplCopyWith<$Res>
       __$$FetchCompanyDetailsErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String error, String companyName, List<Company> companies});
+  $Res call(
+      {String error,
+      String companyName,
+      List<Company> companies,
+      CompanyDetail? selectedCompanyDetail});
+
+  @override
+  $CompanyDetailCopyWith<$Res>? get selectedCompanyDetail;
 }
 
 /// @nodoc
@@ -1593,6 +1915,7 @@ class __$$FetchCompanyDetailsErrorImplCopyWithImpl<$Res>
     Object? error = null,
     Object? companyName = null,
     Object? companies = null,
+    Object? selectedCompanyDetail = freezed,
   }) {
     return _then(_$FetchCompanyDetailsErrorImpl(
       error: null == error
@@ -1607,6 +1930,10 @@ class __$$FetchCompanyDetailsErrorImplCopyWithImpl<$Res>
           ? _value._companies
           : companies // ignore: cast_nullable_to_non_nullable
               as List<Company>,
+      selectedCompanyDetail: freezed == selectedCompanyDetail
+          ? _value.selectedCompanyDetail
+          : selectedCompanyDetail // ignore: cast_nullable_to_non_nullable
+              as CompanyDetail?,
     ));
   }
 }
@@ -1617,7 +1944,8 @@ class _$FetchCompanyDetailsErrorImpl implements FetchCompanyDetailsError {
   const _$FetchCompanyDetailsErrorImpl(
       {required this.error,
       required this.companyName,
-      final List<Company> companies = const []})
+      final List<Company> companies = const [],
+      this.selectedCompanyDetail = null})
       : _companies = companies;
 
   @override
@@ -1634,8 +1962,12 @@ class _$FetchCompanyDetailsErrorImpl implements FetchCompanyDetailsError {
   }
 
   @override
+  @JsonKey()
+  final CompanyDetail? selectedCompanyDetail;
+
+  @override
   String toString() {
-    return 'SponsorState.fetchCompanyDetailsError(error: $error, companyName: $companyName, companies: $companies)';
+    return 'SponsorState.fetchCompanyDetailsError(error: $error, companyName: $companyName, companies: $companies, selectedCompanyDetail: $selectedCompanyDetail)';
   }
 
   @override
@@ -1647,12 +1979,14 @@ class _$FetchCompanyDetailsErrorImpl implements FetchCompanyDetailsError {
             (identical(other.companyName, companyName) ||
                 other.companyName == companyName) &&
             const DeepCollectionEquality()
-                .equals(other._companies, _companies));
+                .equals(other._companies, _companies) &&
+            (identical(other.selectedCompanyDetail, selectedCompanyDetail) ||
+                other.selectedCompanyDetail == selectedCompanyDetail));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, error, companyName,
-      const DeepCollectionEquality().hash(_companies));
+      const DeepCollectionEquality().hash(_companies), selectedCompanyDetail);
 
   /// Create a copy of SponsorState
   /// with the given fields replaced by the non-null parameter values.
@@ -1666,68 +2000,90 @@ class _$FetchCompanyDetailsErrorImpl implements FetchCompanyDetailsError {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         initial,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompaniesLoading,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompaniesSuccess,
-    required TResult Function(
-            String error, String companyName, List<Company> companies)
+    required TResult Function(String error, String companyName,
+            List<Company> companies, CompanyDetail? selectedCompanyDetail)
         fetchCompaniesError,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)
         fetchCompanyDetailsLoading,
-    required TResult Function(String companyName, List<Company> companies)
+    required TResult Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)
         fetchCompanyDetailsSuccess,
-    required TResult Function(
-            String error, String companyName, List<Company> companies)
+    required TResult Function(String error, String companyName,
+            List<Company> companies, CompanyDetail? selectedCompanyDetail)
         fetchCompanyDetailsError,
   }) {
-    return fetchCompanyDetailsError(error, companyName, companies);
+    return fetchCompanyDetailsError(
+        error, companyName, companies, selectedCompanyDetail);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String companyName, List<Company> companies)? initial,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
+        initial,
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesLoading,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesSuccess,
-    TResult? Function(
-            String error, String companyName, List<Company> companies)?
+    TResult? Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesError,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsLoading,
-    TResult? Function(String companyName, List<Company> companies)?
+    TResult? Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)?
         fetchCompanyDetailsSuccess,
-    TResult? Function(
-            String error, String companyName, List<Company> companies)?
+    TResult? Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsError,
   }) {
-    return fetchCompanyDetailsError?.call(error, companyName, companies);
+    return fetchCompanyDetailsError?.call(
+        error, companyName, companies, selectedCompanyDetail);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String companyName, List<Company> companies)? initial,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
+        initial,
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesLoading,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesSuccess,
-    TResult Function(String error, String companyName, List<Company> companies)?
+    TResult Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompaniesError,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsLoading,
-    TResult Function(String companyName, List<Company> companies)?
+    TResult Function(String companyName, List<Company> companies,
+            CompanyDetail selectedCompanyDetail)?
         fetchCompanyDetailsSuccess,
-    TResult Function(String error, String companyName, List<Company> companies)?
+    TResult Function(String error, String companyName, List<Company> companies,
+            CompanyDetail? selectedCompanyDetail)?
         fetchCompanyDetailsError,
     required TResult orElse(),
   }) {
     if (fetchCompanyDetailsError != null) {
-      return fetchCompanyDetailsError(error, companyName, companies);
+      return fetchCompanyDetailsError(
+          error, companyName, companies, selectedCompanyDetail);
     }
     return orElse();
   }
@@ -1790,15 +2146,19 @@ class _$FetchCompanyDetailsErrorImpl implements FetchCompanyDetailsError {
 
 abstract class FetchCompanyDetailsError implements SponsorState {
   const factory FetchCompanyDetailsError(
-      {required final String error,
-      required final String companyName,
-      final List<Company> companies}) = _$FetchCompanyDetailsErrorImpl;
+          {required final String error,
+          required final String companyName,
+          final List<Company> companies,
+          final CompanyDetail? selectedCompanyDetail}) =
+      _$FetchCompanyDetailsErrorImpl;
 
   String get error;
   @override
   String get companyName;
   @override
   List<Company> get companies;
+  @override
+  CompanyDetail? get selectedCompanyDetail;
 
   /// Create a copy of SponsorState
   /// with the given fields replaced by the non-null parameter values.

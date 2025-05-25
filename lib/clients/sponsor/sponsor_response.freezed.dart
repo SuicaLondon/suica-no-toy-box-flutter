@@ -602,6 +602,7 @@ mixin _$CompanyDetail {
   String get name => throw _privateConstructorUsedError;
   String get city => throw _privateConstructorUsedError;
   String get county => throw _privateConstructorUsedError;
+  String get type => throw _privateConstructorUsedError;
   String get rate => throw _privateConstructorUsedError;
   bool? get hasUrl => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
@@ -632,6 +633,7 @@ abstract class $CompanyDetailCopyWith<$Res> {
       String name,
       String city,
       String county,
+      String type,
       String rate,
       bool? hasUrl,
       String? url,
@@ -661,6 +663,7 @@ class _$CompanyDetailCopyWithImpl<$Res, $Val extends CompanyDetail>
     Object? name = null,
     Object? city = null,
     Object? county = null,
+    Object? type = null,
     Object? rate = null,
     Object? hasUrl = freezed,
     Object? url = freezed,
@@ -686,6 +689,10 @@ class _$CompanyDetailCopyWithImpl<$Res, $Val extends CompanyDetail>
       county: null == county
           ? _value.county
           : county // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
               as String,
       rate: null == rate
           ? _value.rate
@@ -736,6 +743,7 @@ abstract class _$$CompanyDetailImplCopyWith<$Res>
       String name,
       String city,
       String county,
+      String type,
       String rate,
       bool? hasUrl,
       String? url,
@@ -763,6 +771,7 @@ class __$$CompanyDetailImplCopyWithImpl<$Res>
     Object? name = null,
     Object? city = null,
     Object? county = null,
+    Object? type = null,
     Object? rate = null,
     Object? hasUrl = freezed,
     Object? url = freezed,
@@ -788,6 +797,10 @@ class __$$CompanyDetailImplCopyWithImpl<$Res>
       county: null == county
           ? _value.county
           : county // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
               as String,
       rate: null == rate
           ? _value.rate
@@ -833,6 +846,7 @@ class _$CompanyDetailImpl implements _CompanyDetail {
       required this.name,
       required this.city,
       required this.county,
+      required this.type,
       required this.rate,
       this.hasUrl,
       this.url,
@@ -854,6 +868,8 @@ class _$CompanyDetailImpl implements _CompanyDetail {
   @override
   final String county;
   @override
+  final String type;
+  @override
   final String rate;
   @override
   final bool? hasUrl;
@@ -872,7 +888,7 @@ class _$CompanyDetailImpl implements _CompanyDetail {
 
   @override
   String toString() {
-    return 'CompanyDetail(id: $id, name: $name, city: $city, county: $county, rate: $rate, hasUrl: $hasUrl, url: $url, description: $description, values: $values, businessModel: $businessModel, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'CompanyDetail(id: $id, name: $name, city: $city, county: $county, type: $type, rate: $rate, hasUrl: $hasUrl, url: $url, description: $description, values: $values, businessModel: $businessModel, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -884,6 +900,7 @@ class _$CompanyDetailImpl implements _CompanyDetail {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.city, city) || other.city == city) &&
             (identical(other.county, county) || other.county == county) &&
+            (identical(other.type, type) || other.type == type) &&
             (identical(other.rate, rate) || other.rate == rate) &&
             (identical(other.hasUrl, hasUrl) || other.hasUrl == hasUrl) &&
             (identical(other.url, url) || other.url == url) &&
@@ -900,8 +917,21 @@ class _$CompanyDetailImpl implements _CompanyDetail {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, city, county, rate,
-      hasUrl, url, description, values, businessModel, createdAt, updatedAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      city,
+      county,
+      type,
+      rate,
+      hasUrl,
+      url,
+      description,
+      values,
+      businessModel,
+      createdAt,
+      updatedAt);
 
   /// Create a copy of CompanyDetail
   /// with the given fields replaced by the non-null parameter values.
@@ -925,6 +955,7 @@ abstract class _CompanyDetail implements CompanyDetail {
       required final String name,
       required final String city,
       required final String county,
+      required final String type,
       required final String rate,
       final bool? hasUrl,
       final String? url,
@@ -945,6 +976,8 @@ abstract class _CompanyDetail implements CompanyDetail {
   String get city;
   @override
   String get county;
+  @override
+  String get type;
   @override
   String get rate;
   @override

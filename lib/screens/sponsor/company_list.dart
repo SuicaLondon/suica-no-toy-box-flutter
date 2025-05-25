@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:suica_no_toy_box_flutter/clients/sponsor/sponsor_response.dart';
 import 'package:suica_no_toy_box_flutter/constants/dimensions.dart';
+import 'package:suica_no_toy_box_flutter/cubits/sponsor/sponsor_cubit.dart';
 import 'package:suica_no_toy_box_flutter/screens/sponsor/company_card.dart';
 
 class CompanyList extends StatelessWidget {
@@ -22,9 +24,8 @@ class CompanyList extends StatelessWidget {
             county: company.county,
             type: company.type,
             rate: company.rate,
-            onTap: () {
-              debugPrint(company.id);
-            },
+            onTap: () =>
+                context.read<SponsorCubit>().getCompanyDetails(company.id),
           ),
         );
       },

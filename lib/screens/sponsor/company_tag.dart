@@ -7,20 +7,21 @@ class CompanyTag extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bodyMedium = Theme.of(context).textTheme.bodyMedium;
+    final theme = Theme.of(context);
+    final textTheme = theme.textTheme;
     return Container(
       padding: const EdgeInsets.symmetric(
         horizontal: Dimensions.sm,
         vertical: Dimensions.xs,
       ),
       decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: Colors.grey.shade300),
+        color: theme.colorScheme.surface,
+        border: Border.all(color: theme.colorScheme.outline),
         borderRadius: BorderRadius.circular(Dimensions.md),
       ),
       child: Text(
         text,
-        style: bodyMedium?.copyWith(fontWeight: FontWeight.w500),
+        style: textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w500),
       ),
     );
   }

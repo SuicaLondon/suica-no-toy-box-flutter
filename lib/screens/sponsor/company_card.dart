@@ -52,7 +52,7 @@ class CompanyCard extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .bodyMedium
-                    ?.copyWith(color: Colors.grey[600]),
+                    ?.copyWith(color: theme.colorScheme.onSurfaceVariant),
               ),
               Text(
                 'Rate: $rate',

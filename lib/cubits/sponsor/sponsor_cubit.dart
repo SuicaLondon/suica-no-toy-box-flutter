@@ -37,4 +37,24 @@ class SponsorCubit extends Cubit<SponsorState> {
       ));
     }
   }
+
+  Future<void> getCompanyDetails(String companyId) async {
+    try {
+      emit(SponsorState.fetchCompanyDetailsLoading(
+        companyName: state.companyName,
+        companies: state.companies,
+        selectedCompanyDetail: null,
+      ));
+
+      final companyDetails = await _sponsorClient.getCompanyDetails(companyId);
+
+      emit(SponsorState.fetchCompanyDetailsSuccess(
+        companyName: state.companyName,
+        companies: state.companies,
+        selectedCompanyDetail: companyDetails!,
+      ));
+    } catch (e, stackTrace) {
+      log(e.toString(), stackTrace: stackTrace);
+    }
+  }
 }

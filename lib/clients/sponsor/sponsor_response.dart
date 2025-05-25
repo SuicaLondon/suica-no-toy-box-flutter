@@ -46,6 +46,7 @@ class CompanyDetail with _$CompanyDetail {
     required String name,
     required String city,
     required String county,
+    required String type,
     required String rate,
     bool? hasUrl,
     String? url,
