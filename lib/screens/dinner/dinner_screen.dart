@@ -15,15 +15,32 @@ class DinnerScreen extends StatefulWidget {
   State<DinnerScreen> createState() => _DinnerScreenState();
 }
 
-class _DinnerScreenState extends State<DinnerScreen> {
+class _DinnerScreenState extends State<DinnerScreen>
+    with SingleTickerProviderStateMixin {
   final _formKey = GlobalKey<FormBuilderState>();
   final ValueNotifier<Set<String>> _options = ValueNotifier(<String>{});
-  final StreamController<int> _selected = StreamController<int>();
+  final StreamController<int> _spinWheelController = StreamController<int>();
+  late final AnimationController _animationController;
+  late final Animation<double> _fadeAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeIn),
+    );
+    _animationController.forward();
+  }
 
   @override
   void dispose() {
-    _selected.close();
+    _spinWheelController.close();
     _options.dispose();
+    _animationController.dispose();
     super.dispose();
   }
 
@@ -46,105 +63,152 @@ class _DinnerScreenState extends State<DinnerScreen> {
     if (_options.value.length > 1) {
       final random = Random();
       final index = random.nextInt(_options.value.length);
-      _selected.add(index);
+      _spinWheelController.add(index);
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         leading: const BackButton(),
         title: const Text('What for dinner?'),
+        elevation: 0,
       ),
-      body: Container(
-        margin: const EdgeInsets.all(Dimensions.md),
-        padding: const EdgeInsets.all(Dimensions.md),
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surface,
-          borderRadius: BorderRadius.circular(Dimensions.md),
-        ),
-        child: Column(
-          spacing: Dimensions.md,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'What sort of dinner do you want to eat tonight?',
-              style: Theme.of(context).textTheme.displaySmall,
+      body: SafeArea(
+        child: FadeTransition(
+          opacity: _fadeAnimation,
+          child: Container(
+            margin: const EdgeInsets.all(Dimensions.md),
+            padding: const EdgeInsets.all(Dimensions.md),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.surface,
+              borderRadius: BorderRadius.circular(Dimensions.md),
+              boxShadow: [
+                BoxShadow(
+                  color: theme.shadowColor.withValues(alpha: 0.1),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
             ),
-            const Text(
-                'Add your cuisine options and let us help you decide what to eat for dinner!'),
-            FormBuilder(
-              key: _formKey,
-              child: Row(
-                spacing: Dimensions.sm,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Expanded(
-                    child: FormBuilderTextField(
-                      name: 'option',
-                      decoration: const InputDecoration(
-                        hintText: 'e.g., Italian, Japanese, Mexican...',
-                        border: OutlineInputBorder(),
-                        isDense: true,
-                      ),
-                      validator: FormBuilderValidators.compose([
-                        FormBuilderValidators.required(),
-                        FormBuilderValidators.minLength(2),
-                      ]),
-                      onSubmitted: (_) => _addOption(),
+            child: Column(
+              spacing: Dimensions.lg,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'What sort of dinner do you want to eat tonight?',
+                  style: theme.textTheme.headlineMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: theme.colorScheme.primary,
+                  ),
+                ),
+                Text(
+                  'Add your cuisine options and let us help you decide what to eat for dinner!',
+                  style: theme.textTheme.bodyLarge?.copyWith(
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
+                  ),
+                ),
+                Card(
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(Dimensions.sm),
+                    side: BorderSide(
+                      color: theme.colorScheme.outline.withOpacity(0.2),
                     ),
                   ),
-                  FilledButton(
-                    onPressed: _addOption,
-                    style: FilledButton.styleFrom(
-                      minimumSize: const Size(100, 48),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(Dimensions.xs),
+                  child: Padding(
+                    padding: const EdgeInsets.all(Dimensions.sm),
+                    child: FormBuilder(
+                      key: _formKey,
+                      child: Row(
+                        spacing: Dimensions.sm,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Expanded(
+                            child: FormBuilderTextField(
+                              name: 'option',
+                              decoration: InputDecoration(
+                                hintText: 'e.g., Italian, Japanese, Mexican...',
+                                border: OutlineInputBorder(
+                                  borderRadius:
+                                      BorderRadius.circular(Dimensions.xs),
+                                ),
+                                contentPadding:
+                                    const EdgeInsets.all(Dimensions.sm),
+                              ),
+                              validator: FormBuilderValidators.compose([
+                                FormBuilderValidators.required(),
+                                FormBuilderValidators.minLength(2),
+                              ]),
+                              onSubmitted: (_) => _addOption(),
+                            ),
+                          ),
+                          FilledButton.icon(
+                            onPressed: _addOption,
+                            style: FilledButton.styleFrom(
+                              minimumSize: const Size(100, 48),
+                              shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.circular(Dimensions.xs),
+                              ),
+                            ),
+                            icon: const Icon(Icons.add),
+                            label: const Text('Add'),
+                          ),
+                        ],
                       ),
                     ),
-                    child: const Text('Add'),
                   ),
-                ],
-              ),
-            ),
-            RepaintBoundary(
-              child: ValueListenableBuilder(
-                valueListenable: _options,
-                builder: (context, options, _) => SelectionChips(
-                  options: options.toList(),
-                  onRemove: _removeOption,
                 ),
-              ),
-            ),
-            SizedBox(
-              width: double.infinity,
-              child: RepaintBoundary(
-                child: ValueListenableBuilder(
-                  valueListenable: _options,
-                  builder: (context, options, child) => ElevatedButton(
-                    onPressed: options.length > 1 ? _spinWheel : null,
-                    child: child,
+                RepaintBoundary(
+                  child: ValueListenableBuilder(
+                    valueListenable: _options,
+                    builder: (context, options, _) => SelectionChips(
+                      options: options.toList(),
+                      onRemove: _removeOption,
+                    ),
                   ),
-                  child: const Text('Decide Dinner!'),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 300,
-              child: RepaintBoundary(
-                child: ValueListenableBuilder(
-                  valueListenable: _options,
-                  builder: (context, options, _) {
-                    return SelectionWheel(
-                      options: options,
-                      selected: _selected.stream,
-                    );
-                  },
+                SizedBox(
+                  width: double.infinity,
+                  child: RepaintBoundary(
+                    child: ValueListenableBuilder(
+                      valueListenable: _options,
+                      builder: (context, options, child) => FilledButton.icon(
+                        onPressed: options.length > 1 ? _spinWheel : null,
+                        style: FilledButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: Dimensions.md),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(Dimensions.sm),
+                          ),
+                        ),
+                        icon: const Icon(Icons.casino),
+                        label: child ?? const Text('Decide Dinner!'),
+                      ),
+                      child: const Text('Decide Dinner!'),
+                    ),
+                  ),
                 ),
-              ),
+                Expanded(
+                  child: RepaintBoundary(
+                    child: ValueListenableBuilder(
+                      valueListenable: _options,
+                      builder: (context, options, _) {
+                        return SelectionWheel(
+                          options: options,
+                          controller: _spinWheelController,
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
