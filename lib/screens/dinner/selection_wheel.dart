@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
 
@@ -5,17 +7,18 @@ class SelectionWheel extends StatelessWidget {
   const SelectionWheel({
     super.key,
     required this.options,
-    required this.selected,
+    required this.controller,
   });
   final Set<String> options;
-  final Stream<int> selected;
+  final StreamController<int> controller;
 
   @override
   Widget build(BuildContext context) {
     if (options.length <= 1) return const SizedBox.shrink();
     final optionsList = options.toList();
     return FortuneWheel(
-      selected: selected,
+      selected: controller.stream,
+      animateFirst: false,
       items: options.map((option) {
         final color = Colors
             .primaries[optionsList.indexOf(option) % Colors.primaries.length];
