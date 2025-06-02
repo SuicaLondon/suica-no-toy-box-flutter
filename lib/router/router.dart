@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:suica_no_toy_box_flutter/cubits/sponsor/sponsor_cubit.dart';
 import 'package:suica_no_toy_box_flutter/cubits/translate/translate_cubit.dart';
 import 'package:suica_no_toy_box_flutter/screens/dinner/dinner_screen.dart';
-import 'package:suica_no_toy_box_flutter/screens/duration_board_screen.dart';
+import 'package:suica_no_toy_box_flutter/screens/duration/duration_board_screen.dart';
 import 'package:suica_no_toy_box_flutter/screens/home_screen.dart';
 import 'package:suica_no_toy_box_flutter/screens/sponsor/sponsor_screen.dart';
 import 'package:suica_no_toy_box_flutter/screens/translate_screen.dart';
