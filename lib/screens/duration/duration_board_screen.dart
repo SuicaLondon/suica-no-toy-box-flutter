@@ -6,7 +6,7 @@ import 'package:suica_no_toy_box_flutter/cubits/duration/duration_state.dart';
 import 'package:suica_no_toy_box_flutter/models/duration/duration_item.dart'
     show DurationItem;
 import 'package:suica_no_toy_box_flutter/screens/duration/add_duration_button.dart';
-import 'package:suica_no_toy_box_flutter/screens/duration/duration_card.dart';
+import 'package:suica_no_toy_box_flutter/screens/duration/card/duration_card.dart';
 
 class DurationBoardScreen extends StatelessWidget {
   const DurationBoardScreen({super.key});
@@ -51,28 +51,32 @@ class DurationBoardScreen extends StatelessWidget {
                     },
                   ),
                 ),
-                BlocSelector<DurationCubit, DurationState, SortDirection>(
-                  selector: (state) {
-                    return state.sortDirection;
-                  },
-                  builder: (context, sortDirection) {
-                    return IconButton(
-                      icon: RepaintBoundary(
-                        child: Icon(sortDirection == SortDirection.asc
-                            ? Icons.arrow_upward
-                            : Icons.arrow_downward),
-                      ),
-                      onPressed: () {
-                        final newDirection = sortDirection == SortDirection.asc
-                            ? SortDirection.desc
-                            : SortDirection.asc;
-                        context
-                            .read<DurationCubit>()
-                            .setSortDirection(newDirection);
-                      },
-                      tooltip: 'Sort direction',
-                    );
-                  },
+                RepaintBoundary(
+                  child:
+                      BlocSelector<DurationCubit, DurationState, SortDirection>(
+                    selector: (state) {
+                      return state.sortDirection;
+                    },
+                    builder: (context, sortDirection) {
+                      return IconButton(
+                        icon: RepaintBoundary(
+                          child: Icon(sortDirection == SortDirection.asc
+                              ? Icons.arrow_upward
+                              : Icons.arrow_downward),
+                        ),
+                        onPressed: () {
+                          final newDirection =
+                              sortDirection == SortDirection.asc
+                                  ? SortDirection.desc
+                                  : SortDirection.asc;
+                          context
+                              .read<DurationCubit>()
+                              .setSortDirection(newDirection);
+                        },
+                        tooltip: 'Sort direction',
+                      );
+                    },
+                  ),
                 ),
                 const AddDurationButton(),
               ],
@@ -88,9 +92,7 @@ class DurationBoardScreen extends StatelessWidget {
                     spacing: Dimensions.lg,
                     runSpacing: Dimensions.lg,
                     children: durations.map((duration) {
-                      return DurationCard(
-                        duration: duration,
-                      );
+                      return DurationCard(duration: duration);
                     }).toList(),
                   );
                 },
