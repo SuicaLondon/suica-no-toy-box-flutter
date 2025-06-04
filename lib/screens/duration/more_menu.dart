@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:suica_no_toy_box_flutter/constants/dimensions.dart';
 import 'package:suica_no_toy_box_flutter/cubits/duration/duration_cubit.dart';
 import 'package:suica_no_toy_box_flutter/models/duration/duration_item.dart';
 import 'package:suica_no_toy_box_flutter/screens/duration/duration_dialog.dart';
@@ -57,12 +58,10 @@ class MoreMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return PopupMenuButton<String>(
-      icon: const Icon(Icons.more_horiz, size: 20),
+      icon: const Icon(Icons.more_horiz, size: Dimensions.md),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
+          borderRadius: BorderRadius.circular(Dimensions.sm)),
       itemBuilder: (context) => [
         PopupMenuItem(
           value: 'edit',
@@ -71,7 +70,7 @@ class MoreMenu extends StatelessWidget {
               Icon(
                 Icons.edit,
                 size: 20,
-                color: theme.colorScheme.primary,
+                color: Theme.of(context).colorScheme.primary,
               ),
               const SizedBox(width: 8),
               const Text('Edit'),
@@ -85,7 +84,7 @@ class MoreMenu extends StatelessWidget {
               Icon(
                 Icons.delete,
                 size: 20,
-                color: theme.colorScheme.error,
+                color: Theme.of(context).colorScheme.error,
               ),
               const SizedBox(width: 8),
               const Text('Delete'),
