@@ -121,7 +121,6 @@ class _DurationDialogState extends State<DurationDialog> {
                     child: ValueListenableBuilder(
                         valueListenable: _disableRepeat,
                         builder: (context, disableRepeat, child) {
-                          print(disableRepeat);
                           return FormBuilderDropdown<RepeatOption>(
                             name: DurationFormKeys.repeat,
                             initialValue: widget.repeat,
