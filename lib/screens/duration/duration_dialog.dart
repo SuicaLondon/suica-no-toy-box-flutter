@@ -6,9 +6,9 @@ import 'package:suica_no_toy_box_flutter/constants/dimensions.dart'
     show Dimensions;
 import 'package:suica_no_toy_box_flutter/constants/form_keys.dart'
     show DurationFormKeys;
-import 'package:suica_no_toy_box_flutter/screens/duration/duration_item.dart'
+import 'package:suica_no_toy_box_flutter/models/duration/duration_item.dart'
     show DurationItem;
-import 'package:suica_no_toy_box_flutter/screens/duration/options.dart'
+import 'package:suica_no_toy_box_flutter/models/duration/options.dart'
     show DurationType, RepeatOption;
 import 'package:uuid/uuid.dart';
 
@@ -160,7 +160,7 @@ class _DurationDialogState extends State<DurationDialog> {
                     if (_formKey.currentState?.saveAndValidate() ?? false) {
                       final fields = _formKey.currentState!.fields;
                       context.pop(DurationItem(
-                        id: widget.id ?? Uuid().v4(),
+                        id: widget.id ?? const Uuid().v4(),
                         name: fields['name']!.value,
                         type: fields['type']!.value,
                         repeat: fields['repeat']!.value,

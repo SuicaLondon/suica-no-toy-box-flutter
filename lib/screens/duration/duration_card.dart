@@ -2,23 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:suica_no_toy_box_flutter/constants/dimensions.dart'
     show Dimensions;
-import 'package:suica_no_toy_box_flutter/screens/duration/duration_item.dart'
+import 'package:suica_no_toy_box_flutter/models/duration/duration_item.dart'
     show DurationItem;
-import 'package:suica_no_toy_box_flutter/screens/duration/more_menu.dart';
-import 'package:suica_no_toy_box_flutter/screens/duration/options.dart'
+import 'package:suica_no_toy_box_flutter/models/duration/options.dart'
     show RepeatOption;
+import 'package:suica_no_toy_box_flutter/screens/duration/more_menu.dart';
 
 class DurationCard extends StatelessWidget {
-  const DurationCard({
-    super.key,
-    required this.duration,
-    required this.onEdit,
-    required this.onDelete,
-  });
+  const DurationCard({super.key, required this.duration});
 
   final DurationItem duration;
-  final Function(DurationItem) onEdit;
-  final Function(DurationItem) onDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -44,11 +37,7 @@ class DurationCard extends StatelessWidget {
                   style: theme.textTheme.titleMedium
                       ?.copyWith(fontWeight: FontWeight.bold),
                 ),
-                MoreMenu(
-                  duration: duration,
-                  onEdit: onEdit,
-                  onDelete: onDelete,
-                ),
+                MoreMenu(duration: duration),
               ],
             ),
             Text(
