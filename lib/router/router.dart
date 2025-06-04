@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:suica_no_toy_box_flutter/cubits/duration/duration_cubit.dart';
 import 'package:suica_no_toy_box_flutter/cubits/sponsor/sponsor_cubit.dart';
 import 'package:suica_no_toy_box_flutter/cubits/translate/translate_cubit.dart';
 import 'package:suica_no_toy_box_flutter/screens/dinner/dinner_screen.dart';
@@ -35,7 +36,10 @@ final GoRouter routers = GoRouter(
     ),
     GoRoute(
       path: '/duration-board',
-      builder: (context, state) => const DurationBoardScreen(),
+      builder: (context, state) => BlocProvider(
+        create: (context) => DurationCubit(),
+        child: const DurationBoardScreen(),
+      ),
     ),
   ],
 );
