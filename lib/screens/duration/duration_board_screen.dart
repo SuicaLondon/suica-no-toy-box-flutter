@@ -14,10 +14,7 @@ class DurationBoardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Duration Board'),
-        elevation: 0,
-      ),
+      appBar: AppBar(title: const Text('Duration Board')),
       body: Container(
         width: double.infinity,
         padding: const EdgeInsets.all(Dimensions.lg),
@@ -28,9 +25,7 @@ class DurationBoardScreen extends StatelessWidget {
               children: [
                 RepaintBoundary(
                   child: BlocSelector<DurationCubit, DurationState, SortBy>(
-                    selector: (state) {
-                      return state.sortBy;
-                    },
+                    selector: (state) => state.sortBy,
                     builder: (context, sortBy) {
                       return DropdownButton<SortBy>(
                         value: sortBy,
@@ -54,9 +49,7 @@ class DurationBoardScreen extends StatelessWidget {
                 RepaintBoundary(
                   child:
                       BlocSelector<DurationCubit, DurationState, SortDirection>(
-                    selector: (state) {
-                      return state.sortDirection;
-                    },
+                    selector: (state) => state.sortDirection,
                     builder: (context, sortDirection) {
                       return IconButton(
                         icon: RepaintBoundary(
@@ -84,13 +77,11 @@ class DurationBoardScreen extends StatelessWidget {
             RepaintBoundary(
               child: BlocSelector<DurationCubit, DurationState,
                   List<DurationItem>>(
-                selector: (state) {
-                  return state.durations;
-                },
+                selector: (state) => state.durations,
                 builder: (context, durations) {
                   return Wrap(
-                    spacing: Dimensions.lg,
-                    runSpacing: Dimensions.lg,
+                    spacing: Dimensions.md,
+                    runSpacing: Dimensions.xs,
                     children: durations.map((duration) {
                       return DurationCard(duration: duration);
                     }).toList(),
