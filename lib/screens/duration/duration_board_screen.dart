@@ -4,8 +4,24 @@ import 'package:suica_no_toy_box_flutter/screens/duration/duration_card.dart';
 import 'package:suica_no_toy_box_flutter/screens/duration/duration_dialog.dart';
 import 'package:suica_no_toy_box_flutter/screens/duration/duration_item.dart'
     show DurationItem;
-import 'package:suica_no_toy_box_flutter/screens/duration/options.dart'
-    show DurationType, RepeatOption;
+
+enum SortBy {
+  date(label: 'Date', value: 'date'),
+  name(label: 'Name', value: 'name');
+
+  const SortBy({
+    required this.label,
+    required this.value,
+  });
+
+  final String label;
+  final String value;
+}
+
+enum SortDirection {
+  asc,
+  desc,
+}
 
 class DurationBoardScreen extends StatefulWidget {
   const DurationBoardScreen({super.key});
@@ -15,23 +31,17 @@ class DurationBoardScreen extends StatefulWidget {
 }
 
 class _DurationBoardScreenState extends State<DurationBoardScreen> {
-  final ValueNotifier<List<DurationItem>> _durations = ValueNotifier([
-    DurationItem(
-      name: 'Birthday',
-      type: DurationType.none,
-      repeat: RepeatOption.never,
-      date: DateTime(2001, 11, 18),
-    ),
-  ]);
-  final ValueNotifier<String> _sortBy = ValueNotifier('Date');
-  final ValueNotifier<bool> _sortAsc = ValueNotifier(true);
+  final ValueNotifier<List<DurationItem>> _durations = ValueNotifier([]);
+  final ValueNotifier<SortBy> _sortBy = ValueNotifier(SortBy.date);
+  final ValueNotifier<SortDirection> _sortDirection =
+      ValueNotifier(SortDirection.asc);
 
   // Helper to open the add duration modal
   Future<void> _showAddDurationDialog() async {
     final newItem = await showDialog<DurationItem>(
       context: context,
       builder: (context) {
-        return const NewDurationDialog();
+        return const DurationDialog();
       },
     );
     if (newItem != null) {
@@ -39,21 +49,34 @@ class _DurationBoardScreenState extends State<DurationBoardScreen> {
     }
   }
 
-  // List<DurationItem> get _sortedDurations {
-  //   final sorted = List<DurationItem>.from(_durations.value);
-  //   sorted.sort((a, b) {
-  //     int cmp;
-  //     if (_sortBy == 'Date') {
-  //       cmp = a.date.compareTo(b.date);
-  //     } else {
-  //       cmp = a.name
-  //           .toLowerCase()
-  //           .compareTo((b['name'] as String).toLowerCase());
-  //     }
-  //     return _sortAsc.value ? cmp : -cmp;
-  //   });
-  //   return sorted;
-  // }
+  // Helper to open the edit duration modal
+  Future<void> _showEditDurationDialog(DurationItem item) async {
+    final editedItem = await showDialog<DurationItem>(
+      context: context,
+      builder: (context) {
+        return DurationDialog(
+          name: item.name,
+          type: item.type,
+          repeat: item.repeat,
+          initialDate: item.date,
+        );
+      },
+    );
+    if (editedItem != null) {
+      _durations.value = _durations.value.map((duration) {
+        if (duration == item) {
+          return editedItem;
+        }
+        return duration;
+      }).toList();
+    }
+  }
+
+  // Helper to delete a duration
+  void _deleteDuration(DurationItem item) {
+    _durations.value =
+        _durations.value.where((duration) => duration != item).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,29 +93,39 @@ class _DurationBoardScreenState extends State<DurationBoardScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                ValueListenableBuilder(
-                    valueListenable: _sortBy,
-                    builder: (context, sortBy, child) {
-                      return DropdownButton<String>(
-                        value: sortBy,
-                        borderRadius: BorderRadius.circular(8),
-                        underline: const SizedBox(),
-                        items: const [
-                          DropdownMenuItem(value: 'Date', child: Text('Date')),
-                          DropdownMenuItem(value: 'Name', child: Text('Name')),
-                        ],
-                        onChanged: (val) => _sortBy.value = val ?? 'Date',
-                      );
-                    }),
-                IconButton(
-                  icon: ValueListenableBuilder(
-                      valueListenable: _sortAsc,
-                      builder: (context, sortAsc, child) {
-                        return Icon(sortAsc
-                            ? Icons.arrow_upward
-                            : Icons.arrow_downward);
+                RepaintBoundary(
+                  child: ValueListenableBuilder(
+                      valueListenable: _sortBy,
+                      builder: (context, sortBy, child) {
+                        return DropdownButton<SortBy>(
+                          value: sortBy,
+                          borderRadius: BorderRadius.circular(8),
+                          underline: const SizedBox(),
+                          items: SortBy.values.map((e) {
+                            return DropdownMenuItem(
+                              value: e,
+                              child: Text(e.label),
+                            );
+                          }).toList(),
+                          onChanged: (val) =>
+                              _sortBy.value = val ?? SortBy.date,
+                        );
                       }),
-                  onPressed: () => _sortAsc.value = !_sortAsc.value,
+                ),
+                IconButton(
+                  icon: RepaintBoundary(
+                    child: ValueListenableBuilder(
+                        valueListenable: _sortDirection,
+                        builder: (context, sortDirection, child) {
+                          return Icon(sortDirection == SortDirection.asc
+                              ? Icons.arrow_upward
+                              : Icons.arrow_downward);
+                        }),
+                  ),
+                  onPressed: () => _sortDirection.value =
+                      _sortDirection.value == SortDirection.asc
+                          ? SortDirection.desc
+                          : SortDirection.asc,
                   tooltip: 'Sort direction',
                 ),
                 Padding(
@@ -116,17 +149,43 @@ class _DurationBoardScreenState extends State<DurationBoardScreen> {
                 ),
               ],
             ),
-            ValueListenableBuilder(
-                valueListenable: _durations,
-                builder: (context, durations, child) {
-                  return Wrap(
-                    spacing: Dimensions.lg,
-                    runSpacing: Dimensions.lg,
-                    children: durations.map((duration) {
-                      return DurationCard(duration: duration);
-                    }).toList(),
-                  );
-                }),
+            RepaintBoundary(
+              child: ValueListenableBuilder(
+                  valueListenable: _durations,
+                  builder: (context, durations, child) {
+                    return ValueListenableBuilder(
+                        valueListenable: _sortDirection,
+                        builder: (context, sortDirection, child) {
+                          return ValueListenableBuilder(
+                              valueListenable: _sortBy,
+                              builder: (context, sortBy, child) {
+                                final sortedDurations = durations.toList();
+                                sortedDurations.sort((a, b) {
+                                  if (sortBy == SortBy.date) {
+                                    return sortDirection == SortDirection.asc
+                                        ? a.date.compareTo(b.date)
+                                        : b.date.compareTo(a.date);
+                                  } else {
+                                    return sortDirection == SortDirection.asc
+                                        ? a.name.compareTo(b.name)
+                                        : b.name.compareTo(a.name);
+                                  }
+                                });
+                                return Wrap(
+                                  spacing: Dimensions.lg,
+                                  runSpacing: Dimensions.lg,
+                                  children: sortedDurations.map((duration) {
+                                    return DurationCard(
+                                      duration: duration,
+                                      onEdit: _showEditDurationDialog,
+                                      onDelete: _deleteDuration,
+                                    );
+                                  }).toList(),
+                                );
+                              });
+                        });
+                  }),
+            ),
           ],
         ),
       ),

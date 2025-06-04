@@ -4,11 +4,13 @@ import 'package:suica_no_toy_box_flutter/screens/duration/options.dart'
 
 class DurationItem extends Equatable {
   const DurationItem({
+    required this.id,
     required this.name,
     required this.type,
     required this.repeat,
     required this.date,
   });
+  final String id;
   final String name;
   final DurationType type;
   final RepeatOption repeat;

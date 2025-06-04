@@ -10,25 +10,35 @@ import 'package:suica_no_toy_box_flutter/screens/duration/duration_item.dart'
     show DurationItem;
 import 'package:suica_no_toy_box_flutter/screens/duration/options.dart'
     show DurationType, RepeatOption;
+import 'package:uuid/uuid.dart';
 
-class NewDurationDialog extends StatefulWidget {
-  const NewDurationDialog({
+enum DurationDialogMode {
+  add,
+  edit,
+}
+
+class DurationDialog extends StatefulWidget {
+  const DurationDialog({
     super.key,
+    this.id,
     this.name,
     this.type,
     this.repeat,
     this.initialDate,
+    this.mode = DurationDialogMode.add,
   });
+  final String? id;
   final String? name;
   final DurationType? type;
   final RepeatOption? repeat;
   final DateTime? initialDate;
+  final DurationDialogMode mode;
 
   @override
-  State<NewDurationDialog> createState() => _NewDurationDialogState();
+  State<DurationDialog> createState() => _DurationDialogState();
 }
 
-class _NewDurationDialogState extends State<NewDurationDialog> {
+class _DurationDialogState extends State<DurationDialog> {
   final GlobalKey<FormBuilderState> _formKey = GlobalKey<FormBuilderState>();
   final ValueNotifier<bool> _disableRepeat = ValueNotifier(false);
 
@@ -150,6 +160,7 @@ class _NewDurationDialogState extends State<NewDurationDialog> {
                     if (_formKey.currentState?.saveAndValidate() ?? false) {
                       final fields = _formKey.currentState!.fields;
                       context.pop(DurationItem(
+                        id: widget.id ?? Uuid().v4(),
                         name: fields['name']!.value,
                         type: fields['type']!.value,
                         repeat: fields['repeat']!.value,
@@ -164,7 +175,9 @@ class _NewDurationDialogState extends State<NewDurationDialog> {
                     padding:
                         const EdgeInsets.symmetric(vertical: Dimensions.md),
                   ),
-                  child: const Text('Add Duration'),
+                  child: Text(widget.mode == DurationDialogMode.add
+                      ? 'Add Duration'
+                      : 'Edit Duration'),
                 ),
               ),
             ],
