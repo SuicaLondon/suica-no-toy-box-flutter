@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:suica_no_toy_box_flutter/router/router.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 
