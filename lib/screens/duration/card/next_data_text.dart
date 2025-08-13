@@ -62,8 +62,8 @@ class NextDataText extends StatelessWidget {
         return 'Next Anniversary: $formattedDate';
       case DurationType.birthday:
         return 'Next Birthday: $formattedDate';
-      case DurationType.bill:
-        return 'Next Bill Dates: $formattedDate';
+      case DurationType.bills:
+        return 'Next Bills Dates: $formattedDate';
       default:
         return 'Next: $formattedDate';
     }

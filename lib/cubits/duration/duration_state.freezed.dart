@@ -237,14 +237,13 @@ class __$$DurationStateImplCopyWithImpl<$Res>
 
 class _$DurationStateImpl implements _DurationState {
   const _$DurationStateImpl(
-      {final List<DurationItem> durations = const [],
-      this.sortBy = SortBy.date,
-      this.sortDirection = SortDirection.asc})
+      {required final List<DurationItem> durations,
+      required this.sortBy,
+      required this.sortDirection})
       : _durations = durations;
 
   final List<DurationItem> _durations;
   @override
-  @JsonKey()
   List<DurationItem> get durations {
     if (_durations is EqualUnmodifiableListView) return _durations;
     // ignore: implicit_dynamic_type
@@ -252,10 +251,8 @@ class _$DurationStateImpl implements _DurationState {
   }
 
   @override
-  @JsonKey()
   final SortBy sortBy;
   @override
-  @JsonKey()
   final SortDirection sortDirection;
 
   @override
@@ -424,9 +421,9 @@ class _$DurationStateImpl implements _DurationState {
 
 abstract class _DurationState implements DurationState {
   const factory _DurationState(
-      {final List<DurationItem> durations,
-      final SortBy sortBy,
-      final SortDirection sortDirection}) = _$DurationStateImpl;
+      {required final List<DurationItem> durations,
+      required final SortBy sortBy,
+      required final SortDirection sortDirection}) = _$DurationStateImpl;
 
   @override
   List<DurationItem> get durations;
@@ -495,14 +492,13 @@ class __$$DurationStateCopyingImplCopyWithImpl<$Res>
 
 class _$DurationStateCopyingImpl implements _DurationStateCopying {
   const _$DurationStateCopyingImpl(
-      {final List<DurationItem> durations = const [],
-      this.sortBy = SortBy.date,
-      this.sortDirection = SortDirection.asc})
+      {required final List<DurationItem> durations,
+      required this.sortBy,
+      required this.sortDirection})
       : _durations = durations;
 
   final List<DurationItem> _durations;
   @override
-  @JsonKey()
   List<DurationItem> get durations {
     if (_durations is EqualUnmodifiableListView) return _durations;
     // ignore: implicit_dynamic_type
@@ -510,10 +506,8 @@ class _$DurationStateCopyingImpl implements _DurationStateCopying {
   }
 
   @override
-  @JsonKey()
   final SortBy sortBy;
   @override
-  @JsonKey()
   final SortDirection sortDirection;
 
   @override
@@ -684,9 +678,9 @@ class _$DurationStateCopyingImpl implements _DurationStateCopying {
 
 abstract class _DurationStateCopying implements DurationState {
   const factory _DurationStateCopying(
-      {final List<DurationItem> durations,
-      final SortBy sortBy,
-      final SortDirection sortDirection}) = _$DurationStateCopyingImpl;
+      {required final List<DurationItem> durations,
+      required final SortBy sortBy,
+      required final SortDirection sortDirection}) = _$DurationStateCopyingImpl;
 
   @override
   List<DurationItem> get durations;
@@ -757,14 +751,13 @@ class __$$DurationStateCopySuccessImplCopyWithImpl<$Res>
 
 class _$DurationStateCopySuccessImpl implements _DurationStateCopySuccess {
   const _$DurationStateCopySuccessImpl(
-      {final List<DurationItem> durations = const [],
-      this.sortBy = SortBy.date,
-      this.sortDirection = SortDirection.asc})
+      {required final List<DurationItem> durations,
+      required this.sortBy,
+      required this.sortDirection})
       : _durations = durations;
 
   final List<DurationItem> _durations;
   @override
-  @JsonKey()
   List<DurationItem> get durations {
     if (_durations is EqualUnmodifiableListView) return _durations;
     // ignore: implicit_dynamic_type
@@ -772,10 +765,8 @@ class _$DurationStateCopySuccessImpl implements _DurationStateCopySuccess {
   }
 
   @override
-  @JsonKey()
   final SortBy sortBy;
   @override
-  @JsonKey()
   final SortDirection sortDirection;
 
   @override
@@ -945,9 +936,10 @@ class _$DurationStateCopySuccessImpl implements _DurationStateCopySuccess {
 
 abstract class _DurationStateCopySuccess implements DurationState {
   const factory _DurationStateCopySuccess(
-      {final List<DurationItem> durations,
-      final SortBy sortBy,
-      final SortDirection sortDirection}) = _$DurationStateCopySuccessImpl;
+          {required final List<DurationItem> durations,
+          required final SortBy sortBy,
+          required final SortDirection sortDirection}) =
+      _$DurationStateCopySuccessImpl;
 
   @override
   List<DurationItem> get durations;
@@ -1024,15 +1016,14 @@ class __$$DurationStateCopyErrorImplCopyWithImpl<$Res>
 
 class _$DurationStateCopyErrorImpl implements _DurationStateCopyError {
   const _$DurationStateCopyErrorImpl(
-      {final List<DurationItem> durations = const [],
-      this.sortBy = SortBy.date,
-      this.sortDirection = SortDirection.asc,
+      {required final List<DurationItem> durations,
+      required this.sortBy,
+      required this.sortDirection,
       required this.message})
       : _durations = durations;
 
   final List<DurationItem> _durations;
   @override
-  @JsonKey()
   List<DurationItem> get durations {
     if (_durations is EqualUnmodifiableListView) return _durations;
     // ignore: implicit_dynamic_type
@@ -1040,10 +1031,8 @@ class _$DurationStateCopyErrorImpl implements _DurationStateCopyError {
   }
 
   @override
-  @JsonKey()
   final SortBy sortBy;
   @override
-  @JsonKey()
   final SortDirection sortDirection;
   @override
   final String message;
@@ -1220,9 +1209,9 @@ class _$DurationStateCopyErrorImpl implements _DurationStateCopyError {
 
 abstract class _DurationStateCopyError implements DurationState {
   const factory _DurationStateCopyError(
-      {final List<DurationItem> durations,
-      final SortBy sortBy,
-      final SortDirection sortDirection,
+      {required final List<DurationItem> durations,
+      required final SortBy sortBy,
+      required final SortDirection sortDirection,
       required final String message}) = _$DurationStateCopyErrorImpl;
 
   @override
@@ -1295,14 +1284,13 @@ class __$$DurationStateImportLoadingImplCopyWithImpl<$Res>
 
 class _$DurationStateImportLoadingImpl implements _DurationStateImportLoading {
   const _$DurationStateImportLoadingImpl(
-      {final List<DurationItem> durations = const [],
-      this.sortBy = SortBy.date,
-      this.sortDirection = SortDirection.asc})
+      {required final List<DurationItem> durations,
+      required this.sortBy,
+      required this.sortDirection})
       : _durations = durations;
 
   final List<DurationItem> _durations;
   @override
-  @JsonKey()
   List<DurationItem> get durations {
     if (_durations is EqualUnmodifiableListView) return _durations;
     // ignore: implicit_dynamic_type
@@ -1310,10 +1298,8 @@ class _$DurationStateImportLoadingImpl implements _DurationStateImportLoading {
   }
 
   @override
-  @JsonKey()
   final SortBy sortBy;
   @override
-  @JsonKey()
   final SortDirection sortDirection;
 
   @override
@@ -1483,9 +1469,10 @@ class _$DurationStateImportLoadingImpl implements _DurationStateImportLoading {
 
 abstract class _DurationStateImportLoading implements DurationState {
   const factory _DurationStateImportLoading(
-      {final List<DurationItem> durations,
-      final SortBy sortBy,
-      final SortDirection sortDirection}) = _$DurationStateImportLoadingImpl;
+          {required final List<DurationItem> durations,
+          required final SortBy sortBy,
+          required final SortDirection sortDirection}) =
+      _$DurationStateImportLoadingImpl;
 
   @override
   List<DurationItem> get durations;
@@ -1556,14 +1543,13 @@ class __$$DurationStateImportSuccessImplCopyWithImpl<$Res>
 
 class _$DurationStateImportSuccessImpl implements _DurationStateImportSuccess {
   const _$DurationStateImportSuccessImpl(
-      {final List<DurationItem> durations = const [],
-      this.sortBy = SortBy.date,
-      this.sortDirection = SortDirection.asc})
+      {required final List<DurationItem> durations,
+      required this.sortBy,
+      required this.sortDirection})
       : _durations = durations;
 
   final List<DurationItem> _durations;
   @override
-  @JsonKey()
   List<DurationItem> get durations {
     if (_durations is EqualUnmodifiableListView) return _durations;
     // ignore: implicit_dynamic_type
@@ -1571,10 +1557,8 @@ class _$DurationStateImportSuccessImpl implements _DurationStateImportSuccess {
   }
 
   @override
-  @JsonKey()
   final SortBy sortBy;
   @override
-  @JsonKey()
   final SortDirection sortDirection;
 
   @override
@@ -1744,9 +1728,10 @@ class _$DurationStateImportSuccessImpl implements _DurationStateImportSuccess {
 
 abstract class _DurationStateImportSuccess implements DurationState {
   const factory _DurationStateImportSuccess(
-      {final List<DurationItem> durations,
-      final SortBy sortBy,
-      final SortDirection sortDirection}) = _$DurationStateImportSuccessImpl;
+          {required final List<DurationItem> durations,
+          required final SortBy sortBy,
+          required final SortDirection sortDirection}) =
+      _$DurationStateImportSuccessImpl;
 
   @override
   List<DurationItem> get durations;
@@ -1823,15 +1808,14 @@ class __$$DurationStateImportErrorImplCopyWithImpl<$Res>
 
 class _$DurationStateImportErrorImpl implements _DurationStateImportError {
   const _$DurationStateImportErrorImpl(
-      {final List<DurationItem> durations = const [],
-      this.sortBy = SortBy.date,
-      this.sortDirection = SortDirection.asc,
+      {required final List<DurationItem> durations,
+      required this.sortBy,
+      required this.sortDirection,
       required this.message})
       : _durations = durations;
 
   final List<DurationItem> _durations;
   @override
-  @JsonKey()
   List<DurationItem> get durations {
     if (_durations is EqualUnmodifiableListView) return _durations;
     // ignore: implicit_dynamic_type
@@ -1839,10 +1823,8 @@ class _$DurationStateImportErrorImpl implements _DurationStateImportError {
   }
 
   @override
-  @JsonKey()
   final SortBy sortBy;
   @override
-  @JsonKey()
   final SortDirection sortDirection;
   @override
   final String message;
@@ -2019,9 +2001,9 @@ class _$DurationStateImportErrorImpl implements _DurationStateImportError {
 
 abstract class _DurationStateImportError implements DurationState {
   const factory _DurationStateImportError(
-      {final List<DurationItem> durations,
-      final SortBy sortBy,
-      final SortDirection sortDirection,
+      {required final List<DurationItem> durations,
+      required final SortBy sortBy,
+      required final SortDirection sortDirection,
       required final String message}) = _$DurationStateImportErrorImpl;
 
   @override

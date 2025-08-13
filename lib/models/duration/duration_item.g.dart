@@ -28,7 +28,7 @@ const _$DurationTypeEnumMap = {
   DurationType.none: 'none',
   DurationType.birthday: 'birthday',
   DurationType.anniversary: 'anniversary',
-  DurationType.bill: 'bills',
+  DurationType.bills: 'bills',
 };
 
 const _$RepeatOptionEnumMap = {

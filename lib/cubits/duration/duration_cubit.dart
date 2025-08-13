@@ -8,7 +8,12 @@ import 'package:suica_no_toy_box_flutter/cubits/duration/duration_state.dart';
 import 'package:suica_no_toy_box_flutter/models/duration/duration_item.dart';
 
 class DurationCubit extends Cubit<DurationState> {
-  DurationCubit() : super(const DurationState()) {
+  DurationCubit()
+      : super(const DurationState(
+          durations: [],
+          sortBy: SortBy.date,
+          sortDirection: SortDirection.asc,
+        )) {
     _loadState();
   }
   final SharedPreferencesAsync _prefs = SharedPreferencesAsync();
@@ -46,7 +51,11 @@ class DurationCubit extends Cubit<DurationState> {
 
   void addDuration(DurationItem duration) {
     final durations = [...state.durations, duration];
-    emit(state.copyWith(durations: durations));
+    emit(DurationState(
+      durations: durations,
+      sortBy: state.sortBy,
+      sortDirection: state.sortDirection,
+    ));
     _saveState();
   }
 
@@ -57,13 +66,21 @@ class DurationCubit extends Cubit<DurationState> {
       }
       return duration;
     }).toList();
-    emit(state.copyWith(durations: durations));
+    emit(DurationState(
+      durations: durations,
+      sortBy: state.sortBy,
+      sortDirection: state.sortDirection,
+    ));
     _saveState();
   }
 
   void deleteDuration(DurationItem duration) {
     final durations = state.durations.where((d) => d != duration).toList();
-    emit(state.copyWith(durations: durations));
+    emit(DurationState(
+      durations: durations,
+      sortBy: state.sortBy,
+      sortDirection: state.sortDirection,
+    ));
     _saveState();
   }
 
@@ -186,7 +203,11 @@ class DurationCubit extends Cubit<DurationState> {
 
       // Add all new durations
       final newDurations = [...currentDurations, ...durations];
-      emit(state.copyWith(durations: newDurations));
+      emit(DurationState(
+        durations: newDurations,
+        sortBy: state.sortBy,
+        sortDirection: state.sortDirection,
+      ));
       await _saveState();
       emit(DurationState.importSuccess(
         durations: newDurations,
@@ -204,17 +225,19 @@ class DurationCubit extends Cubit<DurationState> {
   }
 
   void setSortBy(SortBy sortBy) {
-    emit(state.copyWith(
-      sortBy: sortBy,
+    emit(DurationState(
       durations: sortDurations(),
+      sortBy: sortBy,
+      sortDirection: state.sortDirection,
     ));
     _saveState();
   }
 
   void setSortDirection(SortDirection sortDirection) {
-    emit(state.copyWith(
-      sortDirection: sortDirection,
+    emit(DurationState(
       durations: sortDurations(),
+      sortBy: state.sortBy,
+      sortDirection: sortDirection,
     ));
     _saveState();
   }

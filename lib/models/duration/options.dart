@@ -9,7 +9,7 @@ enum DurationType {
   @JsonValue('anniversary')
   anniversary(label: 'Anniversary'),
   @JsonValue('bills')
-  bill(label: 'Bill');
+  bills(label: 'Bills');
 
   const DurationType({
     required this.label,

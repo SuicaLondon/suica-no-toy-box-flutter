@@ -12,46 +12,54 @@ class MoreMenu extends StatelessWidget {
 
   Future<void> _showEditDurationDialog(
       BuildContext context, DurationItem item) async {
+    final cubit = context.read<DurationCubit>();
     final editedItem = await showDialog<DurationItem>(
       context: context,
       builder: (context) {
-        return DurationDialog(
-          name: item.name,
-          type: item.type,
-          repeat: item.repeat,
-          initialDate: item.date,
+        return BlocProvider.value(
+          value: cubit,
+          child: DurationDialog(
+            name: item.name,
+            type: item.type,
+            repeat: item.repeat,
+            initialDate: item.date,
+          ),
         );
       },
     );
     if (editedItem != null) {
       if (context.mounted) {
-        context.read<DurationCubit>().updateDuration(item, editedItem);
+        cubit.updateDuration(item, editedItem);
       }
     }
   }
 
   Future<void> _showDeleteDurationDialog(
       BuildContext context, DurationItem item) async {
+    final cubit = context.read<DurationCubit>();
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Delete Duration'),
-        content: Text(
-          'Are you sure you want to delete "${duration.name}"?',
+      builder: (context) => BlocProvider.value(
+        value: cubit,
+        child: AlertDialog(
+          title: const Text('Delete Duration'),
+          content: Text(
+            'Are you sure you want to delete "${duration.name}"?',
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Cancel'),
+            ),
+            FilledButton(
+              onPressed: () {
+                cubit.deleteDuration(duration);
+                Navigator.pop(context);
+              },
+              child: const Text('Delete'),
+            ),
+          ],
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
-          ),
-          FilledButton(
-            onPressed: () {
-              context.read<DurationCubit>().deleteDuration(duration);
-              Navigator.pop(context);
-            },
-            child: const Text('Delete'),
-          ),
-        ],
       ),
     );
   }

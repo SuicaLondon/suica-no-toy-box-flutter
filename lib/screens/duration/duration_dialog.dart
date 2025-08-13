@@ -106,7 +106,7 @@ class _DurationDialogState extends State<DurationDialog> {
                                 ?.didChange(RepeatOption.yearly);
                             _disableRepeat.value = true;
                             break;
-                          case DurationType.bill:
+                          case DurationType.bills:
                             fields?[DurationFormKeys.repeat]
                                 ?.didChange(RepeatOption.monthly);
                             _disableRepeat.value = true;
