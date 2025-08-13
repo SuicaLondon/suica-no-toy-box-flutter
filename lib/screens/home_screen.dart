@@ -47,7 +47,7 @@ class HomeScreen extends StatelessWidget {
                   crossAxisCount: 2,
                   mainAxisSpacing: Dimensions.sm,
                   crossAxisSpacing: Dimensions.sm,
-                  childAspectRatio: 1.1,
+                  childAspectRatio: 1,
                   children: navigationItems
                       .map((item) => NavigationCard(
                             title: item.title,

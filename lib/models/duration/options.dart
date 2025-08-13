@@ -8,8 +8,8 @@ enum DurationType {
   birthday(label: 'Birthday'),
   @JsonValue('anniversary')
   anniversary(label: 'Anniversary'),
-  @JsonValue('bill')
-  bill(label: 'Bill');
+  @JsonValue('bills')
+  bills(label: 'Bills');
 
   const DurationType({
     required this.label,
@@ -22,13 +22,13 @@ enum DurationType {
 enum RepeatOption {
   @JsonValue('never')
   never(label: 'No Repeat'),
-  @JsonValue('daily')
+  @JsonValue('day')
   daily(label: 'Daily'),
-  @JsonValue('weekly')
+  @JsonValue('week')
   weekly(label: 'Weekly'),
-  @JsonValue('monthly')
+  @JsonValue('month')
   monthly(label: 'Monthly'),
-  @JsonValue('yearly')
+  @JsonValue('year')
   yearly(label: 'Yearly');
 
   const RepeatOption({

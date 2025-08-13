@@ -28,13 +28,13 @@ const _$DurationTypeEnumMap = {
   DurationType.none: 'none',
   DurationType.birthday: 'birthday',
   DurationType.anniversary: 'anniversary',
-  DurationType.bill: 'bill',
+  DurationType.bills: 'bills',
 };
 
 const _$RepeatOptionEnumMap = {
   RepeatOption.never: 'never',
-  RepeatOption.daily: 'daily',
-  RepeatOption.weekly: 'weekly',
-  RepeatOption.monthly: 'monthly',
-  RepeatOption.yearly: 'yearly',
+  RepeatOption.daily: 'day',
+  RepeatOption.weekly: 'week',
+  RepeatOption.monthly: 'month',
+  RepeatOption.yearly: 'year',
 };

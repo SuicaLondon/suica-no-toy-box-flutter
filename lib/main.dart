@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:suica_no_toy_box_flutter/router/router.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 

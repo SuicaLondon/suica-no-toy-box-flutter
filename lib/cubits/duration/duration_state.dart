@@ -6,10 +6,48 @@ part 'duration_state.freezed.dart';
 @freezed
 class DurationState with _$DurationState {
   const factory DurationState({
-    @Default([]) List<DurationItem> durations,
-    @Default(SortBy.date) SortBy sortBy,
-    @Default(SortDirection.asc) SortDirection sortDirection,
+    required List<DurationItem> durations,
+    required SortBy sortBy,
+    required SortDirection sortDirection,
   }) = _DurationState;
+
+  const factory DurationState.copyLoading({
+    required List<DurationItem> durations,
+    required SortBy sortBy,
+    required SortDirection sortDirection,
+  }) = _DurationStateCopying;
+
+  const factory DurationState.copySuccess({
+    required List<DurationItem> durations,
+    required SortBy sortBy,
+    required SortDirection sortDirection,
+  }) = _DurationStateCopySuccess;
+
+  const factory DurationState.copyError({
+    required List<DurationItem> durations,
+    required SortBy sortBy,
+    required SortDirection sortDirection,
+    required String message,
+  }) = _DurationStateCopyError;
+
+  const factory DurationState.importLoading({
+    required List<DurationItem> durations,
+    required SortBy sortBy,
+    required SortDirection sortDirection,
+  }) = _DurationStateImportLoading;
+
+  const factory DurationState.importSuccess({
+    required List<DurationItem> durations,
+    required SortBy sortBy,
+    required SortDirection sortDirection,
+  }) = _DurationStateImportSuccess;
+
+  const factory DurationState.importError({
+    required List<DurationItem> durations,
+    required SortBy sortBy,
+    required SortDirection sortDirection,
+    required String message,
+  }) = _DurationStateImportError;
 }
 
 enum SortBy {
