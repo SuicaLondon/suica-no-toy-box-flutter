@@ -78,6 +78,20 @@ class MoreMenu extends StatelessWidget {
           ),
         ),
         PopupMenuItem(
+          value: 'copy',
+          child: Row(
+            children: [
+              Icon(
+                Icons.copy,
+                size: 20,
+                color: Theme.of(context).colorScheme.secondary,
+              ),
+              const SizedBox(width: 8),
+              const Text('Copy'),
+            ],
+          ),
+        ),
+        PopupMenuItem(
           value: 'delete',
           child: Row(
             children: [
@@ -96,6 +110,9 @@ class MoreMenu extends StatelessWidget {
         switch (value) {
           case 'edit':
             _showEditDurationDialog(context, duration);
+            break;
+          case 'copy':
+            context.read<DurationCubit>().copyDuration(duration);
             break;
           case 'delete':
             _showDeleteDurationDialog(context, duration);

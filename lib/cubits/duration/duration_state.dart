@@ -10,6 +10,44 @@ class DurationState with _$DurationState {
     @Default(SortBy.date) SortBy sortBy,
     @Default(SortDirection.asc) SortDirection sortDirection,
   }) = _DurationState;
+
+  const factory DurationState.copyLoading({
+    @Default([]) List<DurationItem> durations,
+    @Default(SortBy.date) SortBy sortBy,
+    @Default(SortDirection.asc) SortDirection sortDirection,
+  }) = _DurationStateCopying;
+
+  const factory DurationState.copySuccess({
+    @Default([]) List<DurationItem> durations,
+    @Default(SortBy.date) SortBy sortBy,
+    @Default(SortDirection.asc) SortDirection sortDirection,
+  }) = _DurationStateCopySuccess;
+
+  const factory DurationState.copyError({
+    @Default([]) List<DurationItem> durations,
+    @Default(SortBy.date) SortBy sortBy,
+    @Default(SortDirection.asc) SortDirection sortDirection,
+    required String message,
+  }) = _DurationStateCopyError;
+
+  const factory DurationState.importLoading({
+    @Default([]) List<DurationItem> durations,
+    @Default(SortBy.date) SortBy sortBy,
+    @Default(SortDirection.asc) SortDirection sortDirection,
+  }) = _DurationStateImportLoading;
+
+  const factory DurationState.importSuccess({
+    @Default([]) List<DurationItem> durations,
+    @Default(SortBy.date) SortBy sortBy,
+    @Default(SortDirection.asc) SortDirection sortDirection,
+  }) = _DurationStateImportSuccess;
+
+  const factory DurationState.importError({
+    @Default([]) List<DurationItem> durations,
+    @Default(SortBy.date) SortBy sortBy,
+    @Default(SortDirection.asc) SortDirection sortDirection,
+    required String message,
+  }) = _DurationStateImportError;
 }
 
 enum SortBy {
