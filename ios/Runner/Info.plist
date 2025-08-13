@@ -5,7 +5,7 @@
 		<key>CFBundleDevelopmentRegion</key>
 		<string>$(DEVELOPMENT_LANGUAGE)</string>
 		<key>CFBundleDisplayName</key>
-		<string>Suica の Toy Box</string>
+		<string>Suica No Toy Box Flutter</string>
 		<key>CFBundleExecutable</key>
 		<string>$(EXECUTABLE_NAME)</string>
 		<key>CFBundleIdentifier</key>
@@ -45,11 +45,6 @@
 		<true/>
 		<key>UIApplicationSupportsIndirectInputEvents</key>
 		<true/>
-		<key>LSApplicationQueriesSchemes</key>
-		<array>
-			<string>sms</string>
-			<string>tel</string>
-		</array>
 		<key>UIStatusBarHidden</key>
 		<false/>
 	</dict>
