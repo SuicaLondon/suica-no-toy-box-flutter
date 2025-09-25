@@ -65,7 +65,21 @@ class NextDataText extends StatelessWidget {
       case DurationType.bills:
         return 'Next Bill Dates: $formattedDate';
       default:
-        return 'Next: $formattedDate';
+        final now = DateTime.now();
+        final difference = getNextDate().difference(now).inDays;
+        if (difference == 0) {
+          return 'Today';
+        } else if (difference == 1) {
+          return 'Tomorrow';
+        } else if (difference == -1) {
+          return 'Yesterday';
+        } else {
+          if (difference > 1) {
+            return 'In $difference days';
+          } else {
+            return '$difference days ago';
+          }
+        }
     }
   }
 
